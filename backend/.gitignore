@@ -1,1 +1,19 @@
+# Node.js dependencies
 node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# IDE and editor settings (if you're using VSCode or other editors)
+.vscode/
+.idea/
+
+# Build files
+build/
+dist/
+
+# OS-specific files (macOS example)
+.DS_Store
