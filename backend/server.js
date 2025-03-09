@@ -3,10 +3,11 @@ require('dotenv').config()
 const express = require("express");
 const cors = require('cors');
 
-
+console.log(process.env)
 const app = express();
 
-const port = 5000;
+const port = process.env.PORT
+console.log(port)
 
 //Enable CORs
 app.use(cors())
@@ -16,7 +17,7 @@ app.use(express.json());
 
 //Routes
 app.get('/', (req,res) => {
-  res.status(200).send(`Hello from the backend!!${process.env.message}`)
+  res.status(200).send(`Hello from the backend!!${process.env.MESSAGE}`)
 });
 
 //start the server
