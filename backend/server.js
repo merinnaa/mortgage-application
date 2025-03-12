@@ -1,26 +1,25 @@
 //backend/server.js
 require('dotenv').config()
 const express = require("express");
-const bodyParser = require('body-parser')
+
 const cors = require('cors');
+
+//Import the routes
+const userInfoRoutes = require('./routes/userInfoRoutes');
 
 
 const app = express();
+const port = process.env.PORT || 4000;
 
-const port = 5000;
 
-//Enable CORs
-app.use(cors())
 
 //middleware to parse json bodies
 app.use(express.json());
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true,}))
+app.use(express.urlencoded({extended: true,}))
+app.use(cors())
 
 //Routes
-app.get('/', (req,res) => {
-  res.status(200).send(`Hello from the backend!!${process.env.message}`)
-});
+app.use ('/users', userInfoRoutes);
 
 //start the server
 app.listen(port, () => {
