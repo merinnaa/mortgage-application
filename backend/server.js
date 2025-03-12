@@ -1,6 +1,7 @@
 //backend/server.js
 require('dotenv').config()
 const express = require("express");
+const bodyParser = require('body-parser')
 const cors = require('cors');
 
 
@@ -13,6 +14,8 @@ app.use(cors())
 
 //middleware to parse json bodies
 app.use(express.json());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true,}))
 
 //Routes
 app.get('/', (req,res) => {
