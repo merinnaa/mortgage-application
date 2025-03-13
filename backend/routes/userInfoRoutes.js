@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   userInfoQueries.getUsers()
     .then(users => {
       res.json({users});
+      console.log('hello');
     })
     .catch(err => {
       res.status(500)
