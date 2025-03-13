@@ -1,12 +1,11 @@
 //backend/server.js
 require('dotenv').config()
 const express = require("express");
-
 const cors = require('cors');
 
 //Import the routes
 const userInfoRoutes = require('./routes/userInfoRoutes');
-
+const phonUserRoutes = require('./routes/phoneUserRoutes')
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -20,6 +19,7 @@ app.use(cors())
 
 //Routes
 app.use ('/users', userInfoRoutes);
+app.use ('/phone', phonUserRoutes);
 
 //start the server
 app.listen(port, () => {
