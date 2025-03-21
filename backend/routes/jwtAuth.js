@@ -4,13 +4,15 @@ const router = require("express").Router();
 const db = require("../db/db");
 const bcrypt = require("bcrypt")
 const jwtGenerator = require("../utils/jwtGenerator");
+const validInfo = require("../middleware/validInfo");
+const authorization = require("../middleware/authorization");
 
 
 
 // First time registering a user
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-router.post("/register", async (req, res) =>{
+router.post("/register",validInfo, async (req, res) =>{
   try {
     // 1. First destructure the req.body coming from the client side , req.body is coming as (name, email, password)
 
@@ -56,7 +58,7 @@ router.post("/register", async (req, res) =>{
     /////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    router.post("/login", async (req,res) => {
+    router.post("/login", validInfo, async (req,res) => {
       try {
         //1. destructure the req.body
         const {email, password} = req.body;
@@ -94,7 +96,7 @@ router.post("/register", async (req, res) =>{
     /////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    router.get("/is-verify" , (req,res) => {
+    router.get("/is-verify" , authorization, (req,res) => {
       try {
         res.json(true);
         
