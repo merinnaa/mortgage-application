@@ -1,7 +1,8 @@
-//backend/server.js
+//backend/server.jsf
+
+require("dotenv").config()
 const express = require("express");
 const cors = require('cors');
-
 
 
 const app = express();
@@ -20,10 +21,10 @@ app.use(cors())
 
 // Register and Login routes
 
-app.use ('/auth', require("./routes/jwtAuth"));
+app.use("/auth", require("./routes/jwtAuth"));
 
 // dashboard route
-app.use ('/dashboard', require("./routes/dashboard"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 //start the server
 app.listen(port, () => {
