@@ -1,11 +1,8 @@
 //backend/server.js
-require('dotenv').config()
 const express = require("express");
 const cors = require('cors');
 
-//Import the routes
-const userInfoRoutes = require('./routes/userInfoRoutes');
-const phonUserRoutes = require('./routes/phoneUserRoutes')
+
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -17,9 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true,}))
 app.use(cors())
 
+/////////////////////////////////////////////////////
 //Routes
-app.use ('/users', userInfoRoutes);
-app.use ('/phone', phonUserRoutes);
+////////////////////////////////////////////////////
+
+// Register and Login routes
+
+app.use ('/auth', require("./routes/jwtAuth"));
+
+// dashboard route
+app.use ('/dashboard', require("./routes/dashboard"));
 
 //start the server
 app.listen(port, () => {
