@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from "react";
+import { toast } from "react-toastify";
 
 
 const Login = ({setAuth})=> {
@@ -29,9 +30,11 @@ const Login = ({setAuth})=> {
       if(parseRes.token) {
         localStorage.setItem("token", parseRes.token);
         setAuth(true);
+        toast.success("Login Successfully!!")
         
       }else {
         setAuth(false)
+        toast.error(parseRes)
         
       }
       
