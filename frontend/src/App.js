@@ -27,16 +27,17 @@ function App() {
 
       const parseRes = await response.json();
 
-      parseRes === true ? setIsAuthenticated(true) :setIsAuthenticated(false);
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
       
     } catch (error) {
       console.log(error.message);
       
     }
   }
+
   useEffect(() => {
     isAuth()
-  }, [])
+  },[ ])
 
   return (
     <Fragment>
@@ -46,7 +47,7 @@ function App() {
           <Routes>
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
-            <Route path="/dashboard" element= {!isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
+            <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
 
           </Routes>
 
