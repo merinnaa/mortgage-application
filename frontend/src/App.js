@@ -20,9 +20,9 @@ function App() {
       <Router>
         <div className='container'>
           <Routes>
-            <Route path="/login" element= {< Login  setAuth={setAuth}/> }/>
-            <Route path="/register" element= {< Register  setAuth={setAuth}/> }/>
-            <Route path="/dashboard" element= {< Dashboard  setAuth={setAuth}/> }/>
+            <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
+            <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
+            <Route path="/dashboard" element= {!isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
 
           </Routes>
 
