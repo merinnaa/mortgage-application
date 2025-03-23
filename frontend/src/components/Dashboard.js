@@ -7,7 +7,7 @@ const Dashboard = ({setAuth})=> {
 
   async function getName() {
     try {
-      const response = await fetch("http://localhost:5000/dashboard/", {
+      const response = await fetch("https://mortgage-application-server.vercel.app/dashboard/", {
         method: "GET",
         headers: {token: localStorage.token}
       });
