@@ -1,6 +1,7 @@
 //backend/server.jsf
-
-require("dotenv").config()
+module.exports = (req, res) => {
+  // Your server code here
+  require("dotenv").config()
 const express = require("express");
 const cors = require('cors');
 
@@ -30,3 +31,5 @@ app.use("/dashboard", require("../routes/dashboard"));
 app.listen(port, () => {
   console.log(`Backend running on port ${port}`)
 })
+  res.status(200).json({ message: 'Hello from backend!' });
+};
