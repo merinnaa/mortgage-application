@@ -4,7 +4,7 @@
 	"routes": [
     {
       "src": "/auth",
-      "dest": "/backend/routes/auth.js"
+      "dest": "/backend/routes/jwtAuth.js"
     },
     {
       "src": "/dashboard",
