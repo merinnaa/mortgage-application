@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from "./components/Login"
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import Front from './components/Front';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,6 +46,7 @@ function App() {
         <div className='container'>
           <ToastContainer/>
           <Routes>
+            <Route path="/" element= {<Front/>} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
             <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
