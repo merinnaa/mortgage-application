@@ -15,7 +15,9 @@
  app.use(express.json());
  app.use(express.urlencoded({extended: true,}))
  app.use(cors())
- 
+
+
+
  /////////////////////////////////////////////////////
  //Routes
  ////////////////////////////////////////////////////
@@ -23,6 +25,8 @@
  // Register and Login routes
  
  app.use("/auth", require("./routes/jwtAuth"));
+ app.use("/gauth", require("./routes/googleLogin"))
+ 
  
  // dashboard route
  app.use("/dashboard", require("./routes/dashboard"));
