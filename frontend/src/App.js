@@ -21,7 +21,7 @@ function App() {
   }
   async function isAuth() {
     try {
-      const response = await fetch ("https://localhost:5000/auth/is-verify", {
+      const response = await fetch ("https://mortgage-application-server.vercel.app/auth/is-verify", {
         method: "GET",
         headers: {token: localStorage.token}
       })

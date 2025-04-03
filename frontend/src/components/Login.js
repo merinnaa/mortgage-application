@@ -55,7 +55,7 @@ const Login = ({setAuth})=> {
       const { credential, clientId, selectBy } = credentialResponse;
   
       // Send the data to the backend (no need to stringify the credential, it's already a string)
-      const responseGoogle = await fetch("http://localhost:5000/gauth/", {
+      const responseGoogle = await fetch("https://mortgage-application-server.vercel.app/gauth/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ credential: credentialResponse.credential,  // The token from Google Sign-In
