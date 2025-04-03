@@ -23,6 +23,7 @@
  // Register and Login routes
  
  app.use("/auth", require("./routes/jwtAuth"));
+ app.use("/google-login", require('./routes/googleLogin'))
  
  // dashboard route
  app.use("/dashboard", require("./routes/dashboard"));
