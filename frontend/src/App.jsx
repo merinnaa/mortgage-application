@@ -12,6 +12,7 @@ import Login from "./components/Login"
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Front from './components/Front';
+import Header from './components/Header';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,9 +44,11 @@ function App() {
   return (
     <Fragment>
       <Router>
+      <Header/>
         <div className='container'>
           <ToastContainer/>
           <Routes>
+            
             <Route path="/" element= {<Front/>} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
@@ -54,6 +57,7 @@ function App() {
           </Routes>
 
         </div>
+        
       </Router>
 
     </Fragment>
