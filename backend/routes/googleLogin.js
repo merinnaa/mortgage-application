@@ -5,7 +5,7 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const client = new OAuth2Client('YOUR_GOOGLE_CLIENT_ID');  // Replace with your Google Client ID
 
 // Google Login Route
-router.post("/google-login", async (req, res) => {
+router.post("/", async (req, res) => {
   const { tokenId } = req.body;
 
   try {
@@ -17,6 +17,7 @@ router.post("/google-login", async (req, res) => {
 
     const payload = ticket.getPayload();
     const email = payload.email;
+    const name = payload.name;
 
     // Check if user exists in DB
     const user = await db.query("SELECT * FROM users WHERE email = $1;", [email]);
@@ -24,8 +25,8 @@ router.post("/google-login", async (req, res) => {
     if (user.rows.length === 0) {
       // If user doesn't exist, create a new one
       const newUser = await db.query(
-        "INSERT INTO users (email) VALUES ($1) RETURNING *;",
-        [email]
+        "INSERT INTO users (name, email) VALUES ($1,$2) RETURNING *;",
+        [email, name]
       );
       const token = jwtGenerator(newUser.rows[0].id);
       return res.json({ token });
