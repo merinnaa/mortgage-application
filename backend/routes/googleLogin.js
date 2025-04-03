@@ -1,32 +1,45 @@
 const router = require("express").Router();
 const {OAuth2Client} = require('google-auth-library');
 const jwtGenerator = require("../utils/jwtGenerator");
+const db = require("../db/db");
+const bcrypt =require("bcrypt");
+const authorization = require("../middleware/authorization");
 
-const client = new OAuth2Client('YOUR_GOOGLE_CLIENT_ID');  // Replace with your Google Client ID
+
+const client = new OAuth2Client('445644859415-32ejmapv6q579590duc4oniuv8saethp.apps.googleusercontent.com');  // Replace with your Google Client ID
 
 // Google Login Route
 router.post("/", async (req, res) => {
-  const { tokenId } = req.body;
+
+
+  const { credential, clientId } = req.body;
 
   try {
     // Verify the token with Google
     const ticket = await client.verifyIdToken({
-      idToken: tokenId,
-      audience: 'YOUR_GOOGLE_CLIENT_ID', // Replace with your Google Client ID
+      idToken: credential,
+      audience: clientId, // Replace with your Google Client ID
     });
 
     const payload = ticket.getPayload();
-    const email = payload.email;
-    const name = payload.name;
+    const email = payload["email"];
+    const name = payload["name"];
+    const password = ""
 
     // Check if user exists in DB
     const user = await db.query("SELECT * FROM users WHERE email = $1;", [email]);
 
+    //bcrypt password 
+    const saltRound = 10;
+      const salt = await bcrypt.genSalt(saltRound);
+
+      const bcryptPassword = await bcrypt.hash(password, salt);
+
     if (user.rows.length === 0) {
       // If user doesn't exist, create a new one
       const newUser = await db.query(
-        "INSERT INTO users (name, email) VALUES ($1,$2) RETURNING *;",
-        [email, name]
+        "INSERT INTO users (name, email, password) VALUES ($1,$2,$3) RETURNING *;",
+        [name, email,bcryptPassword]
       );
       const token = jwtGenerator(newUser.rows[0].id);
       return res.json({ token });
