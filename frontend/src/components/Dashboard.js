@@ -36,7 +36,7 @@ const Dashboard = ({setAuth})=> {
 
   return (
     <Fragment>
-      <h1 className="text-center text-primary text-large my-5" >Fundify</h1>
+      <h1 className="text-blue-500" >Fundify</h1>
       <h2>Welcome {name}</h2>
       <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
     </Fragment>

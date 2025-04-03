@@ -5,7 +5,7 @@ import '../App.css';
 const Front = () => {
   return (
     <Fragment >
-      <h1 class="front">Fundify</h1>
+      <h1 className="text-red-500">Fundify</h1>
       <div class="imagesContainer">
         
         <div class="imageSample">
