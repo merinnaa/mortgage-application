@@ -13,6 +13,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Front from './components/Front';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,9 +44,10 @@ function App() {
 
   return (
     <Fragment>
-      <Router>
+     
+      <Router >
       <Header/>
-        <div className='container'>
+        <div >
           <ToastContainer/>
           <Routes>
             
@@ -56,10 +58,12 @@ function App() {
 
           </Routes>
 
-        </div>
         
+        
+        </div>
+        <Footer />
       </Router>
-
+    
     </Fragment>
 
   );
