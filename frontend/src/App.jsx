@@ -47,7 +47,7 @@ function App() {
      
       <Router >
       <Header/>
-        <div >
+        <div className='min-h-screen flex flex-col'>
           <ToastContainer/>
           <Routes>
             

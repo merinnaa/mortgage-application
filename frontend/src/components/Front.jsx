@@ -22,7 +22,9 @@ const Front = () => {
             </div>
         </div>
     </article>
-    <img className="w-1/2 h-25 left-[900px] top-[100px] absolute" src="./images/mega-creator.png" />
+    <div className="py-5 px-6">
+    <img className="w-1/2 h-25 left-[750px] top-[100px] absolute" src="./images/mega-creator.png" />
+    </div>
 </section>
     <div className="w-full p-2.5 left-0 top-[832px] absolute bg-teal-500 inline-flex flex-col justify-center items-center gap-2.5">
       
