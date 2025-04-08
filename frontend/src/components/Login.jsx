@@ -52,7 +52,7 @@ const Login = ({setAuth})=> {
   const googleSuccess = async (credentialResponse) => {
     try {
       // The response object contains `credential` and `clientId`
-      const { credential, clientId, selectBy } = credentialResponse;
+      // const { credential, clientId, selectBy } = credentialResponse;
   
       // Send the data to the backend (no need to stringify the credential, it's already a string)
       const responseGoogle = await fetch("https://mortgage-application-server.vercel.app/gauth/", {
