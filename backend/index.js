@@ -24,7 +24,7 @@
  
  // Register and Login routes
  
- app.use("/auth", require("./routes/jwtAuth"));
+ app.use("/auth", require("./routes/userRoutes"));
  app.use("/gauth", require("./routes/googleLogin"))
  
  
