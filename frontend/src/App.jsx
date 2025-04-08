@@ -2,7 +2,7 @@ import React, {Fragment, useState , useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import {toast, ToastContainer} from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
