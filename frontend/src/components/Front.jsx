@@ -23,7 +23,7 @@ const Front = () => {
         </div>
     </article>
     <div className="py-5 px-6">
-    <img className="w-1/2 h-25 left-[750px] top-[100px] absolute" src="./images/mega-creator.png" />
+    <img className="w-1/2 h-25 left-[750px] top-[100px] absolute" src="./images/mega-creator.png" alt="" />
     </div>
 </section>
     <div className="w-full p-2.5 left-0 top-[832px] absolute bg-teal-500 inline-flex flex-col justify-center items-center gap-2.5">
@@ -32,7 +32,7 @@ const Front = () => {
             <div className="w-96 h-[478px] p-6 bg-neutral-100 rounded-2xl flex justify-start items-center gap-2.5">
                 <div className="flex-1 h-96 flex justify-start items-start gap-6">
                     <div className="w-80 inline-flex flex-col justify-start items-start gap-7">
-                        <img className="self-stretch h-56" src="./images/verification.png" />
+                        <img className="self-stretch h-56" src="./images/verification.png" alt=""/>
                         <div className="self-stretch flex flex-col justify-start items-center gap-4">
                             <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Instant Accuracy, Zero Guesswork</div>
                             <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Let Fundify handle the heavy lifting. Detect mismatches, and compliance issues in real-time.</div>
@@ -45,7 +45,7 @@ const Front = () => {
                     <div className="self-stretch flex flex-col justify-start items-start gap-8">
                         <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                             <div className="self-stretch flex flex-col justify-center items-center gap-2.5">
-                                <img className="w-64 h-56" src="./images/save-ime.png" />
+                                <img className="w-64 h-56" src="./images/save-ime.png" alt=""/>
                             </div>
                         </div>
                         <div className="self-stretch flex flex-col justify-start items-center gap-4">
@@ -57,7 +57,7 @@ const Front = () => {
             </div>
             <div className="h-[478px] p-6 bg-neutral-100 rounded-2xl flex justify-start items-center gap-2.5">
                 <div className="w-80 h-96 inline-flex flex-col justify-start items-start">
-                    <img className="w-80 h-72" src="./images/scale.png" />
+                    <img className="w-80 h-72" src="./images/scale.png" alt=""/>
                     <div className="self-stretch flex flex-col justify-start items-center gap-4">
                         <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Scale Smarter, Not Harder</div>
                         <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Grow your loan volume without growing your ops team. Fundify handles more volume, so your staff doesn’t have to.</div>
