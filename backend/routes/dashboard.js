@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const db = require("../db/db");
+const usersDb = require("../db/queries/users");
 const authorization = require("../middleware/authorization");
 
 router.get("/",authorization, async (req,res) => {
   try {
-    const user = await db.query("SELECT name FROM users WHERE id = $1 ;", [req.user])
-    res.json(user.rows[0])
+    const user = await usersDb.getUsersById(req.user)
+      res.json(user.rows[0])
 
   } catch (error) {
     console.error(error.message);

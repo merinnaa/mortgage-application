@@ -1,6 +1,7 @@
-const db = require("../db/db");
+
 const jwtGenerator = require("../utils/jwtGenerator");
 const bcrypt = require("bcrypt")
+const usersDb = require("../db/queries/users")
 
 
 //First time registering a user
@@ -11,8 +12,9 @@ const bcrypt = require("bcrypt")
      const {name, email, password} = req.body;
 
     //2. check if the user exists in DB (if user exists throw error)
-      const user = await db.query("SELECT * FROM users WHERE email = $1;", [email]);
-
+      
+      const user = await usersDb.getUsersByEmail(email);
+      console.log("here is users",user)
       if(user.rows.length !== 0){
         return res.status(401).json("User already exists")
       }
@@ -24,11 +26,12 @@ const bcrypt = require("bcrypt")
       const salt = await bcrypt.genSalt(saltRound);
 
       const bcryptPassword = await bcrypt.hash(password, salt);
+ 
       
       
       //4.update db with new user with hashedpassword
       
-      const newUser = await db.query("INSERT INTO users (name, email, password) VALUES ($1, $2 , $3) RETURNING *;",[name, email, bcryptPassword] )
+      const newUser = await usersDb.createNewUser(name,email,bcryptPassword)
      
       
     //5.Once registered successfully , generate a token 
@@ -56,7 +59,7 @@ const login = async (req, res) => {
 
     //2. check if user doesn't exist(if not then we throw error);
     
-    const user = await db.query("SELECT * FROM users WHERE email = $1;", [email]);
+    const user = await usersDb.getUsersByEmail(email);
      if( user.rows.length === 0 ){
       return res.status(401).json("User email or password is incorrect!!")
      }
