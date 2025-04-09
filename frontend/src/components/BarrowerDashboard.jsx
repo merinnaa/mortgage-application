@@ -1,40 +1,9 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React from 'react'
 
-
-
-const Dashboard = ()=> {
-  const [name, setName] = useState("")
-
-  async function getName() {
-    try {
-      const response = await fetch("https://mortgage-application-server.vercel.app/dashboard/", {
-        method: "GET",
-        headers: {token: localStorage.token}
-      });
-  
-      const parseRes = await response.json();
-
-      setName(parseRes.name.toUpperCase())
-      
-    } catch (error) {
-      console.error(error.message)
-      
-    }
-
-  }
-
-
-
-  useEffect(()=> {
-    getName()
-  },[])
-
+const BarrowerDashboard = () => {
   return (
-    <Fragment>
-      
-  
-      <div className="inline-flex flex-col justify-start items-center gap-8">
-    <h2 className="self-stretch justify-start text-black text-5xl font-bold font-['Inter'] leading-[56px] tracking-wide">Welcome, {name}!</h2>
+    <div className="inline-flex flex-col justify-start items-center gap-8">
+    <div className="self-stretch justify-start text-black text-5xl font-bold font-['Inter'] leading-[56px] tracking-wide">Welcome, Chloe!</div>
     <div className="self-stretch p-8 bg-white rounded-lg inline-flex justify-start items-center gap-2.5">
         <div className="w-[806px] inline-flex flex-col justify-center items-center gap-8">
             <div className="w-[608px] flex flex-col justify-start items-start gap-6">
@@ -123,9 +92,7 @@ const Dashboard = ()=> {
         </div>
     </div>
 </div>
-    
-    </Fragment>
   )
-
 }
-export default Dashboard
+
+export default BarrowerDashboard

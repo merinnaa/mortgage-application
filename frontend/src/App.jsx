@@ -46,7 +46,7 @@ function App() {
     <Fragment>
      
       <Router >
-      <Header/>
+      <Header isAuthenticated={isAuthenticated} setAuth={setAuth} />
         <div className='min-h-screen flex flex-col'>
           <ToastContainer/>
           <Routes>
