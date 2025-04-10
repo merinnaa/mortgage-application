@@ -74,7 +74,7 @@ const login = async (req, res) => {
     }
 
     //4. if password is correct then generate token 
-    const token = jwtGenerator(lender.rows[0].id);
+    const token = jwtGenerator(lender.rows[0].id,lender.rows[0].email);
     res.json({token})
 
     
