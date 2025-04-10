@@ -13,10 +13,10 @@ router.get("/", authorization, async (req, res) => {
       
       if(lender.rows[0].role === 'admin'){
         console.log(lender.rows[0])
-        return res.json("This is admin page")
+        return res.json(lender.rows[0])
       }    
 
-        return res.json("This is Supervisior")     
+        return res.json(lender.rows[0])     
       
     }
     if (user.rows.length !== 0) {
