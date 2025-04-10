@@ -19,4 +19,11 @@ const createNewLender = (first_name,last_name,email,bcryptPassword,institution,e
   
 }
 
-module.exports = {getLendersByEmail,createNewLender,getLendersById}
+//Get lenders by id and email
+const getLenderByIdEmail = (id,email) => {
+  return db.query('SELECT * FROM lenders WHERE id=$1 AND email=$2;',[id,email])
+      
+            
+}
+
+module.exports = {getLenderByIdEmail,getLendersByEmail,createNewLender,getLendersById}
