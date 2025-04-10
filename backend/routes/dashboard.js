@@ -12,7 +12,7 @@ router.get("/", authorization, async (req, res) => {
     if (lender.rows.length !==0) {    
       
       if(lender.rows[0].role === 'admin'){
-        console.log(lender.rows[0])
+      
         return res.json(lender.rows[0])
       }    
 
@@ -20,7 +20,7 @@ router.get("/", authorization, async (req, res) => {
       
     }
     if (user.rows.length !== 0) {
-      console.log(user.rows[0])    
+      
       return res.json(user.rows[0])
     }
   } catch (error) {
