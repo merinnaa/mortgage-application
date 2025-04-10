@@ -25,6 +25,7 @@
  // Register and Login routes
  
  app.use("/auth", require("./routes/userRoutes"));
+ app.use("/auth", require("./routes/lenderRoutes"));
  app.use("/gauth", require("./routes/googleLogin"))
  
  
