@@ -73,7 +73,7 @@ const login = async (req, res) => {
     }
 
     //4. if password is correct then generate token 
-    const token = jwtGenerator(user.rows[0].id);
+    const token = jwtGenerator(user.rows[0].id,user.rows[0].email);
     res.json({token})
 
     
