@@ -9,12 +9,13 @@ const lendersDb = require("../db/queries/lenders")
   try {
     // 1. First destructure the req.body coming from the client side , req.body is coming as (name, email, password)
 
-     const {name, email, password} = req.body;
+     const {first_name,last_name, email, password, institution,employee_id,role} = req.body;
 
     //2. check if the lender exists in DB (if lender exists throw error)
       
       const lender = await lendersDb.getLendersByEmail(email);
-      console.log("here is lenders",lender)
+     
+      
       if(lender.rows.length !== 0){
         return res.status(401).json("lender already exists")
       }
