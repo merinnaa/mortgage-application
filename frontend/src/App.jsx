@@ -50,7 +50,7 @@ function App() {
         <div className='min-h-screen flex flex-col'>
           <ToastContainer/>
           <Routes>
-            
+            <Route path="/" element= {<Front/>} />
             <Route path="/" element= {<Front/>} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
