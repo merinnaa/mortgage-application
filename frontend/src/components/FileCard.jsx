@@ -19,6 +19,7 @@ const FileCard = ({ label, file, setFile }) => {
   return (
     <div className="w-[600px] flex flex-col gap-2">
       <div className="px-6 py-4 rounded-lg outline outline-1 outline-black flex flex-col justify-center items-center gap-2.5">
+        
         <input type="file" ref={inputRef} onChange={handleChange} className="hidden" />
         <label
           className="cursor-pointer p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5"

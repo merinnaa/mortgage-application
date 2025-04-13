@@ -62,9 +62,24 @@ const Dashboard = () => {
       <h1 className="text-5xl font-bold mb-10">Welcome, {name}!</h1>
 
       <form onSubmit={onSubmit} className="bg-white p-12 rounded-lg flex flex-col gap-[59px] items-center w-full max-w-2xl">
-        <FileCard label="Upload ID (e.g. driver’s license, passport)" file={idFile} setFile={setIdFile} />
-        <FileCard label="Upload Bank Statement" file={bankFile} setFile={setBankFile} />
-        <FileCard label="Upload Income Document (e.g. W2, 1099)" file={incomeFile} setFile={setIncomeFile} />
+      
+   
+        <FileCard 
+        label="Upload ID (e.g. driver’s license, passport)" 
+        file={idFile} setFile={setIdFile} 
+        />
+
+        <FileCard 
+        label="Upload Bank Statement" 
+        file={bankFile} 
+        setFile={setBankFile} 
+        />
+
+        <FileCard 
+        label="Upload Income Document (e.g. W2, 1099)"
+         file={incomeFile} 
+         setFile={setIncomeFile} 
+         />
 
         <button
           type="submit"
