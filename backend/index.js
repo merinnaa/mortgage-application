@@ -31,6 +31,10 @@
  
  // dashboard route
  app.use("/dashboard", require("./routes/dashboard"));
+
+ //upload files route
+
+ app.use("/upload", require("./routes/fileUploadRoutes"))
  
  //start the server
  app.listen(port, () => {
