@@ -5,8 +5,9 @@ const  fileupload = require("../middleware/multerIntial");
 const authorization = require("../middleware/authorization")
 
 
+//file upload route 
 router.post("/",authorization,fileupload,file.fileUploader)
 
-// router.post("/",(req,res) => {res.json("hello uploads")})
+
 
 module.exports= router
