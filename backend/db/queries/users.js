@@ -19,4 +19,10 @@ const createNewUser = (name,email,bcryptPassword) => {
   
 }
 
-module.exports = {getUsersByEmail,createNewUser,getUsersById}
+//Get users by id 
+const getUsersByIdEmail = (id,email) => {
+  return db.query('SELECT * FROM users WHERE id=$1 AND email=$2;',[id,email])
+      
+            
+}
+module.exports = {getUsersByEmail,createNewUser,getUsersById,getUsersByIdEmail}

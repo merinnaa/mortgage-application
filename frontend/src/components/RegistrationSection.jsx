@@ -50,7 +50,7 @@ const handleSubmit = () => {
                             <img img src={home} />
                             </div>
 
-      {/* Hidden radio input */}
+     
       <input
         type="radio"
         id="borrower"
@@ -61,7 +61,7 @@ const handleSubmit = () => {
         className="hidden"
       />
 
-      {/* Custom styled radio */}
+      
       <div className={`w-6 h-6 p-1.5 rounded-xl outline outline-2 outline-offset-[-2px] flex justify-center items-center
         ${selectedRole === "borrower" ? "outline-red-400" : "outline-zinc-800"}
       `}>
@@ -82,62 +82,7 @@ const handleSubmit = () => {
 
 
 
-                    {/* <label
-                htmlFor="borrower"
-                className={`cursor-pointer p-6 bg-white rounded-lg inline-flex flex-col justify-start items-start gap-2.5 border-2
-                  ${selectedRole === "borrower" ? "border-red-500" : "border-gray-200"}
-                  transition-colors duration-200 ease-in-out
-                `}>
-                <div className="w-72 self-stretch p-6 bg-white rounded-lg inline-flex flex-col justify-start items-start gap-2.5">
-                    <div className="w-60 flex flex-col justify-start items-end gap-4">
-                        <div className="self-stretch inline-flex justify-between items-start">
-                            <div className="w-6 h-6 relative overflow-hidden">
-                            <img img src={home} />
-                            </div>
-                            <input
-                            type="radio"
-                            name="userRole"
-                            value="borrower"
-                            onChange={handleRadioChange}
-                            className="w-6 h-6 rounded-full border border-zinc-800" 
-                            />
-                        </div>
-                        <div className="inline-flex justify-center items-center gap-2.5">
-                            <div className="text-center justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">I’m applying for a mortgage loan</div>
-                        </div>
-                    </div>
-                </div>
-                </label> */}
-                {/* <label
-                htmlFor="lender"
-                className={`cursor-pointer p-6 bg-white rounded-lg inline-flex flex-col justify-start items-start gap-2.5 border-2
-                  ${isSelected === "lender" ? "border-red-500" : "border-gray-200"}
-                  transition-colors duration-200 ease-in-out
-                `}
-              >
-                
-                
-                    <div className="w-72 self-stretch p-6 bg-white rounded-lg inline-flex flex-col justify-start items-start gap-2.5">
-                    <div className="w-60 flex flex-col justify-start items-end gap-4">
-                    <div className="self-stretch inline-flex justify-between items-start">
-                            <div className="w-6 h-6 relative overflow-hidden">
-                              <img src={brief} />
-                                
-                            </div>
-                           
-                            < input
-                              type="radio"
-                              name="userRole"
-                              value="lender"
-                              onChange={handleRadioChange}
-                             
-                              className="w-6 h-6 rounded-full border border-zinc-800"  />
-                             </div>
-                        </div>
-                        <div className="text-center justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">I’m processing a mortgage loan<br/>for clients</div>
-                    </div>
-                </label> */}
-
+                    
 
 
 <label
@@ -155,7 +100,7 @@ const handleSubmit = () => {
                                 
                             </div>
 
-      {/* Hidden radio input */}
+     
       <input
         type="radio"
         id="lender"
@@ -166,7 +111,7 @@ const handleSubmit = () => {
         className="hidden"
       />
 
-      {/* Custom styled radio */}
+     
       <div className="w-6 h-6 p-1.5 rounded-xl outline outline-2 outline-offset-[-2px] flex justify-center items-center
         transition-colors duration-200 ease-in-out
         ${
