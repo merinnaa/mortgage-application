@@ -34,9 +34,9 @@ const Dashboard = () => {
     }
 
     const formData = new FormData();
-    formData.append("id", idFile);
-    formData.append("bank", bankFile);
-    formData.append("income", incomeFile);
+    formData.append("file", idFile);
+    formData.append("file", bankFile);
+    formData.append("file", incomeFile);
 
     try {
       const response = await fetch("https://mortgage-application-server.vercel.app/upload", {
