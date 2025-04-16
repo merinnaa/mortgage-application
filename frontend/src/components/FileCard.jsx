@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import document from '../images/Document.png'
 import remove from '../images/Remove.png'
-const FileCard = ({ label, file, setFile }) => {
+const FileCard = ({ file, setFile }) => {
   const inputRef = useRef(null);
 
   const handleChange = (e) => {
@@ -31,7 +31,7 @@ const FileCard = ({ label, file, setFile }) => {
               stroke="#F2F2F2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </label>
-        <div className="text-center text-zinc-800 text-base font-normal leading-normal">{label}</div>
+        <div className="text-center text-zinc-800 text-base font-normal leading-normal">Drag and drop files here</div>
       </div>
 
       {file && (

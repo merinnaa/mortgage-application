@@ -100,7 +100,7 @@ const Login = ({setAuth})=> {
    
     <form 
     onSubmit = {onSubmitForm}
-    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[541px] p-12 bg-white rounded-lg inline-flex flex-col justify-start items-center gap-11"
+    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[541px] p-12 bg-white rounded-lg inline-flex flex-col justify-start items-center "
 >
         <div className="self-stretch flex flex-col justify-start items-start gap-12">
             <div className="self-stretch flex flex-col justify-start items-center gap-4">
@@ -131,6 +131,11 @@ const Login = ({setAuth})=> {
 
             </div>
         
+            <div className="self-stretch inline-flex justify-center items-center gap-2.5">
+    <div className="flex-1 h-0 outline outline-1 outline-offset-[-0.50px] outline-black" />
+    <div className="text-center justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">or</div>
+    <div className="w-44 h-0 outline outline-1 outline-offset-[-0.50px] outline-black" />
+</div>
             <div className="self-stretch flex flex-col justify-start items-start gap-4">
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className="w-full h-10 px-3 rounded-lg bg-white border border-black focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all">
@@ -158,9 +163,21 @@ const Login = ({setAuth})=> {
                 </div>
             </div>
         </div>
-        <div className="self-stretch h-10 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-            <button className="justify-start text-white text-base font-['SF_Pro'] leading-snug">Log in</button>
+        <div className='w-full flex justify-center mt-1'>
+            <button 
+            disabled={!email || !password}
+            type="submit"
+            className={` px-10 py-2.5 rounded-[48px]  text-base font-semibold transition
+            
+            ${
+              email && password ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"
+            }`}
+            >Log in</button>
         </div>
+
+       
+       
+
     </form>
     
 </div>
