@@ -34,7 +34,7 @@ const navigate = useNavigate();
          { !isAuthenticated ? (
           <>
           <Link
-          to="/register"
+          to="/registration"
           className="px-6 py-2.5 bg-red-400 rounded-full text-white text-base leading-snug font-sans hover:bg-red-500 transition"
         >
           Create account

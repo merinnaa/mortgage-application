@@ -14,7 +14,8 @@ import Dashboard from './components/Dashboard';
 import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
+import RegisterLender from './components/RegisterLender'
+import RegistrationSection from './components/RegistrationSection';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -51,7 +52,9 @@ function App() {
           <ToastContainer/>
           <Routes>
             <Route path="/" element= {<Front/>} />
-            <Route path="/" element= {<Front/>} />
+            <Route path="/registration" element={<RegistrationSection />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/registerlender" element={<RegisterLender />} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
             <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
