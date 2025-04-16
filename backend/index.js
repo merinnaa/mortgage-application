@@ -25,11 +25,16 @@
  // Register and Login routes
  
  app.use("/auth", require("./routes/userRoutes"));
+ app.use("/auth", require("./routes/lenderRoutes"));
  app.use("/gauth", require("./routes/googleLogin"))
  
  
  // dashboard route
  app.use("/dashboard", require("./routes/dashboard"));
+
+ //upload files route
+
+ app.use("/upload", require("./routes/fileUploadRoutes"))
  
  //start the server
  app.listen(port, () => {

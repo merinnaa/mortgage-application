@@ -1,26 +1,27 @@
 
 const jwtGenerator = require("../utils/jwtGenerator");
 const bcrypt = require("bcrypt")
-const usersDb = require("../db/queries/users")
+const lendersDb = require("../db/queries/lenders")
 
 
-//First time registering a user
+//First time registering a lender
  const register = async (req, res) => {
   try {
     // 1. First destructure the req.body coming from the client side , req.body is coming as (name, email, password)
 
-     const {name, email, password} = req.body;
+     const {first_name,last_name, email, password, institution,employee_id,role} = req.body;
 
-    //2. check if the user exists in DB (if user exists throw error)
+    //2. check if the lender exists in DB (if lender exists throw error)
       
-      const user = await usersDb.getUsersByEmail(email);
-      console.log("here is users",user)
-      if(user.rows.length !== 0){
-        return res.status(401).json("User already exists")
+      const lender = await lendersDb.getLendersByEmail(email);
+     
+      
+      if(lender.rows.length !== 0){
+        return res.status(401).json("lender already exists")
       }
          
 
-    //3.if new user Bcrypt the user password
+    //3.if new lender Bcrypt the lender password
       
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
@@ -29,13 +30,13 @@ const usersDb = require("../db/queries/users")
  
       
       
-      //4.update db with new user with hashedpassword
+      //4.update db with new lender with hashedpassword
       
-      const newUser = await usersDb.createNewUser(name,email,bcryptPassword)
+      const newLender = await lendersDb.createNewLender(first_name,last_name,email,bcryptPassword,institution, employee_id, role)
      
       
     //5.Once registered successfully , generate a token 
-      const token = jwtGenerator(newUser.rows[0].id)
+      const token = jwtGenerator(newLender.rows[0].id)
       res.json({token});
 
 
@@ -57,23 +58,23 @@ const login = async (req, res) => {
     //1. destructure the req.body
     const {email, password} = req.body;
 
-    //2. check if user doesn't exist(if not then we throw error);
+    //2. check if lender doesn't exist(if not then we throw error);
     
-    const user = await usersDb.getUsersByEmail(email);
-     if( user.rows.length === 0 ){
-      return res.status(401).json("User email or password is incorrect!!")
+    const lender = await lendersDb.getLendersByEmail(email);
+     if( lender.rows.length === 0 ){
+      return res.status(401).json("Lender email or password is incorrect!!")
      }
 
      //3. otherwise check if the password is correct, compare it with database password
     
-    const validPassword = await bcrypt.compare(password, user.rows[0].password);
+    const validPassword = await bcrypt.compare(password, lender.rows[0].password);
 
     if(!validPassword) {
-      return res.status(401).json("User email or password is incorrect!!")
+      return res.status(401).json("Lender email or password is incorrect!!")
     }
 
     //4. if password is correct then generate token 
-    const token = jwtGenerator(user.rows[0].id,user.rows[0].email);
+    const token = jwtGenerator(lender.rows[0].id,lender.rows[0].email);
     res.json({token})
 
     
