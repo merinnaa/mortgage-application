@@ -39,7 +39,7 @@ const Dashboard = () => {
     formData.append("income", incomeFile);
 
     try {
-      const response = await fetch("/lender", {
+      const response = await fetch("https://mortgage-application-server.vercel.app/upload", {
         method: "POST",
         body: formData
       });
