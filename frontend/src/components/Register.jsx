@@ -7,10 +7,13 @@ const Register = ({setAuth})=> {
   const [inputs, setInputs] = useState({
     email:"",
     password:"",
-    name:""
-  })
+    first_name:"",
+    last_name:"",
 
-  const {email, password, name} = inputs;
+  })
+  
+
+  const {email, password, first_name,last_name} = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value});
