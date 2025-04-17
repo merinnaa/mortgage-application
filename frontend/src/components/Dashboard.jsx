@@ -16,7 +16,7 @@ const Dashboard = () => {
         });
 
         const parseRes = await response.json();
-        setName(parseRes.name.toUpperCase());
+        setName(parseRes.first_name.toUpperCase());
       } catch (error) {
         console.error(error.message);
       }
