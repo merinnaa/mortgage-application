@@ -23,8 +23,8 @@ router.post("/", async (req, res) => {
 
     const payload = ticket.getPayload();
     const email = payload["email"];
-    const first_name = payload["first_name"];
-    const last_name = payload["first_name"];
+    const first_name = payload["given_name"];
+    const last_name = payload["family_name"];
     const password = ""
 
     // Check if user exists in DB
