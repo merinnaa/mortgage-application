@@ -7,15 +7,15 @@ import { useNavigate } from "react-router-dom";
    const [inputs, setInputs] = useState({
      email:"",
      password:"",
-    firstName:"",
-    lastName:"",
+    first_name:"",
+    last_name:"",
     confirmPassword: ""
    })
 
    const [errors, setErrors] = useState({});
 
 const navigate = useNavigate();
-   const {email, password, firstName, lastName, confirmPassword} = inputs;
+   const {email, password, first_name, last_name, confirmPassword} = inputs;
 
    const onChange = (e) => {
      setInputs({ ...inputs, [e.target.name]: e.target.value});
@@ -28,8 +28,8 @@ const navigate = useNavigate();
     console.log(inputs)
 
 const newErrors = ({});
-if(!inputs.firstName) newErrors.firstName = "First name is required";
-if(!inputs.lastName) newErrors.lastName = "Last Name is required";
+if(!inputs.first_name) newErrors.first_name = "First name is required";
+if(!inputs.last_name) newErrors.last_name = "Last Name is required";
 if(!inputs.email) newErrors.email = "Email is is required";
 if(!inputs.password) newErrors.password ="Password is required";
 
@@ -45,7 +45,7 @@ if (Object.keys(newErrors).length > 0) {
 setErrors({})
 
     try {
-     const body = {email, password, firstName, lastName};
+     const body = {email, password, first_name, last_name};
 
      const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
        method: "POST",
@@ -94,35 +94,35 @@ setErrors({})
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div 
                     className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.firstName ? ' outline-orange-600':' outline-black' }
+                    ${ errors.first_name ? ' outline-orange-600':' outline-black' }
   `}>
                         <input
                         
-                        name="firstName"
+                        name="first_name"
                         placeholder="First Name"
                         type="text"
-                        value={firstName}
+                        value={first_name}
            onChange={(e) => onChange(e)}
                          className="w-full h-full px-4  placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"/>
                          
                     </div>
-                    {errors.firstName && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.firstName}</div>}
+                    {errors.first_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.first_name}</div>}
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.lastName? ' outline-orange-600':' outline-black' }
+                    ${ errors.last_name? ' outline-orange-600':' outline-black' }
   `}>
                         <input 
-                        name="lastName"
+                        name="last_name"
                         placeholder="Last Name"
                         type="text"
                         
-                        value={lastName}
+                        value={last_name}
            onChange={(e) => onChange(e)}
                         
                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
                     </div>
-                    {errors.lastName && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.lastName}</div>}
+                    {errors.last_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.last_name}</div>}
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
@@ -174,7 +174,7 @@ setErrors({})
 <button 
 
 className={`w-full h-full  p-2.5 rounded-[48px] text-Button-Text-Inactive/20 text-base font-['SF_Pro'] leading-snug
-${  inputs.firstName && inputs.lastName &&  inputs.email &&  inputs.password &&  inputs.confirmPassword ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"}
+${  inputs.first_name && inputs.last_name &&  inputs.email &&  inputs.password &&  inputs.confirmPassword ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"}
 `}>Sign up</button>
 </div>
     </form>
