@@ -21,7 +21,7 @@ const Register = ({setAuth})=> {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = {email, password, name};
+      const body = {email, password, first_name,last_name};
 
       const response = await fetch("https://mortgage-application-server.vercel.app/auth/register", {
         method: "POST",
