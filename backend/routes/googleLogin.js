@@ -23,7 +23,8 @@ router.post("/", async (req, res) => {
 
     const payload = ticket.getPayload();
     const email = payload["email"];
-    const name = payload["name"];
+    const first_name = payload["first_name"];
+    const last_name = payload["first_name"];
     const password = ""
 
     // Check if user exists in DB
@@ -38,8 +39,8 @@ router.post("/", async (req, res) => {
     if (user.rows.length === 0) {
       // If user doesn't exist, create a new one
       const newUser = await db.query(
-        "INSERT INTO users (name, email, password) VALUES ($1,$2,$3) RETURNING *;",
-        [name, email,bcryptPassword]
+        "INSERT INTO users (first_name,last_name, email, password) VALUES ($1,$2,$3,$4) RETURNING *;",
+        [first_name,last_name, email,bcryptPassword]
       );
       const token = jwtGenerator(newUser.rows[0].id);
       return res.json({ token });
