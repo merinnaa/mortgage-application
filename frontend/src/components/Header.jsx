@@ -16,7 +16,7 @@ const navigate = useNavigate();
     setAuth(false);
    
     toast.success("Logged out Successfully!!")
-    navigate('/login');
+    navigate('/');
   }
 
 
