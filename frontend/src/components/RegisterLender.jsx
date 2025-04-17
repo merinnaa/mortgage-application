@@ -23,7 +23,7 @@ const Register = ({setAuth})=> {
     try {
       const body = {email, password, name};
 
-      const response = await fetch("https://mortgage-application-server.vercel.app/auth/register", {
+      const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
         method: "POST",
         headers : {"Content-Type" : "application/json"},
         body: JSON.stringify(body)
