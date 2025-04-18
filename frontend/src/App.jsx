@@ -53,9 +53,9 @@ function App() {
           <Routes>
             <Route path="/" element= {<Front/>} />
             <Route path="/registration" element={<RegistrationSection />} />
-  <Route path="/register" element={<Register setAuth={setAuth} />} />
-  <Route path="/thankyou" element={<thankYou />} />
-  <Route path="/registerlender" element={<RegisterLender />} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/thankyou" element={<thankYou />} />
+            <Route path="/registerlender" element={<RegisterLender />} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
             <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
