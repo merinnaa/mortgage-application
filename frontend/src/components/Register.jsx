@@ -101,7 +101,7 @@ setErrors({})
                         name="firstName"
                         placeholder="First Name"
                         type="text"
-                        value={firstName}
+                        value={inputs.firstName}
            onChange={(e) => onChange(e)}
                          className="w-full h-full px-4  placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"/>
                          
@@ -117,7 +117,7 @@ setErrors({})
                         placeholder="Last Name"
                         type="text"
                         
-                        value={lastName}
+                        value={inputs.lastName}
            onChange={(e) => onChange(e)}
                         
                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
@@ -132,7 +132,7 @@ setErrors({})
                         type="email"
                         placeholder="Email Address"
                         name="email"
-                        value={email}
+                        value={inputs.email}
           onChange={(e) => onChange(e)}
                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
                     </div>
@@ -146,7 +146,7 @@ setErrors({})
                         type="password"
                         name="password"
                         placeholder="Password"
-                        value={password}
+                        value={inputs.password}
                                  onChange={(e) => onChange(e)}
 
                          className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
@@ -162,7 +162,7 @@ setErrors({})
                         type="password" 
                         name="confirmPassword"
                         placeholder="Confirm Password"
-                        value={confirmPassword}
+                        value={inputs.confirmPassword}
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
                     </div>
