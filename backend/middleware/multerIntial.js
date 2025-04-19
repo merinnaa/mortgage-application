@@ -15,4 +15,8 @@ const fileUpload = multer({storage, fileFilter})
 
 
 
-module.exports = fileUpload.array('files',3)
+module.exports = fileUpload.fields([
+  { name: 'id', maxCount: 1 },
+  { name: 'bank', maxCount: 1 },
+  { name: 'income', maxCount: 1 }
+])
