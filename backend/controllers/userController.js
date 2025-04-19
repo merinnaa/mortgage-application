@@ -9,7 +9,7 @@ const usersDb = require("../db/queries/users")
   try {
     // 1. First destructure the req.body coming from the client side , req.body is coming as (name, email, password)
 
-     const {name, email, password} = req.body;
+     const {first_name,last_name, email, password} = req.body;
 
     //2. check if the user exists in DB (if user exists throw error)
       
@@ -31,7 +31,7 @@ const usersDb = require("../db/queries/users")
       
       //4.update db with new user with hashedpassword
       
-      const newUser = await usersDb.createNewUser(name,email,bcryptPassword)
+      const newUser = await usersDb.createNewUser(first_name,last_name,email,bcryptPassword)
      
       
     //5.Once registered successfully , generate a token 

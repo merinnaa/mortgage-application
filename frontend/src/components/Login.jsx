@@ -112,7 +112,7 @@ const Login = ({setAuth})=> {
 
           <div  className="flex justify-start items-center gap-2.5">
 
-<GoogleOAuthProvider clientId="445644859415-32ejmapv6q579590duc4oniuv8saethp.apps.googleusercontent.com"  // Google Client ID
+<GoogleOAuthProvider clientId="445644859415-0ek2a6s4n67ml9dh9uc0ap8bfk1fi17k.apps.googleusercontent.com"  // Google Client ID
 >
 
 <GoogleLogin

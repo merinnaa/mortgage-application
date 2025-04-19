@@ -16,7 +16,7 @@ const navigate = useNavigate();
     setAuth(false);
    
     toast.success("Logged out Successfully!!")
-    navigate('/login');
+    navigate('/');
   }
 
 
@@ -26,7 +26,7 @@ const navigate = useNavigate();
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
         
         <div className="text-teal-500 text-2xl font-bold leading-9 tracking-tight font-inter">
-          Fundify
+          <Link to='/'>Fundify</Link>
         </div>
 
         

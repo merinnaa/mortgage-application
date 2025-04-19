@@ -1,6 +1,6 @@
 import React from 'react'
 
-const thankYou = () => {
+const ThankYou = () => {
   return (
     <>
       <div className="w-full h-[982px] relative bg-stone-100 overflow-hidden">
@@ -20,4 +20,4 @@ const thankYou = () => {
   )
 }
 
-export default thankYou
+export default ThankYou

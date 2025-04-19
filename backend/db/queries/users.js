@@ -14,8 +14,8 @@ const getUsersById = (id) => {
             
 }
 
-const createNewUser = (name,email,bcryptPassword) => {
-  return db.query("INSERT INTO users (name, email, password) VALUES ($1, $2 , $3) RETURNING *;",[name, email, bcryptPassword] )
+const createNewUser = (first_name,last_name, email,bcryptPassword) => {
+  return db.query("INSERT INTO users (first_name,last_name,email, password) VALUES ($1, $2 , $3, $4) RETURNING *;",[first_name,last_name, email, bcryptPassword] )
   
 }
 
