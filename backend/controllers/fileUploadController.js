@@ -1,5 +1,5 @@
 const files = require("../db/queries/files")
-
+const dataExtraction = require("../dataExtraction/dataExtraction")
 
 
 
@@ -30,6 +30,11 @@ for (const field of requiredFields) {
         file.size,
         file.buffer
       );
+
+      console.log(field)
+      dataExtraction(field)
+
+      
     }
 
     res.status(200).json({
