@@ -44,13 +44,13 @@ async function dataExtraction(field) {
       throw new Error(`Invalid field name: ${field}`);
     }
     // Query to get PDF binary data from a table (update table/column names accordingly)
-    const res = await client.query(
+    const res = await db.query(
       `SELECT file_data FROM ${table}_doc ORDER BY id DESC LIMIT 1`
     );
 
     //File id to used as a reference for foriegn key in database table
 
-    const file_id = await client.query(
+    const file_id = await db.query(
       `SELECT id FROM ${table}_doc ORDER BY id DESC LIMIT 1;`
     );
 
@@ -162,7 +162,7 @@ async function dataExtraction(field) {
         throw new Error(`Invalid field name: `);
       }
 
-      client.query(insertData, value);
+      db.query(insertData, value);
       console.log("Data populated into tables");
     } catch (e) {
       console.error("Failed to parse JSON:", e.message);
