@@ -1,3 +1,4 @@
+require("dotenv").config()
 // pool method 
 const {Pool} = require('pg');
 
@@ -9,7 +10,7 @@ const dbParams = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: {
-    rejectUnauthorized: false // If your database uses a self-signed certificate
+    rejectUnauthorized: false 
   }
 };
 
