@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import FileCard from './FileCard';
-
+import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
   const [name, setName] = useState("");
   const [idFile, setIdFile] = useState(null);
   const [bankFile, setBankFile] = useState(null);
   const [incomeFile, setIncomeFile] = useState(null);
+ 
+const navigate = useNavigate();
 
   useEffect(() => {
     async function getName() {
@@ -30,6 +32,7 @@ const Dashboard = () => {
 
     if (!idFile || !bankFile || !incomeFile) {
       alert("Please upload all required files.");
+     
       return;
     }
 
@@ -50,7 +53,8 @@ const Dashboard = () => {
 
       const result = await response.json();
       if (response.ok) {
-        alert("Files uploaded successfully!");
+       
+        navigate('/status')
       } else {
         console.log("Something went wrong.");
       }

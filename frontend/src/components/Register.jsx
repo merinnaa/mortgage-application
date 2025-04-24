@@ -58,6 +58,8 @@ setErrors({})
 
      if(parseRes.token) {
       localStorage.setItem("token", parseRes.token);
+      console.log("Parsed response:", parseRes);
+
       setAuth(true);
      toast.success("Registered Successfully")
      navigate("/thankyou")  

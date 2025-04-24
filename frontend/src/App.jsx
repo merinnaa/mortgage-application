@@ -1,7 +1,7 @@
 import React, {Fragment, useState , useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import thankYou from './components/thankYou';
+import ThankYou from './components/ThankYou';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +16,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterLender from './components/RegisterLender'
 import RegistrationSection from './components/RegistrationSection';
+import Status from './components/Status';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -53,13 +55,13 @@ function App() {
           <Routes>
             <Route path="/" element= {<Front/>} />
             <Route path="/registration" element={<RegistrationSection />} />
-  <Route path="/register" element={<Register setAuth={setAuth} />} />
-  <Route path="/thankyou" element={<thankYou />} />
+  {/* <Route path="/register" element={<Register setAuth={setAuth} />} /> */}
+  <Route path="/thankyou" element={<ThankYou />} />
   <Route path="/registerlender" element={<RegisterLender />} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
-            <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
+            <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/thankyou"/> }/>
             <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
-
+<Route path='/status' element={isAuthenticated ? <Status setAuth={setAuth}/> : <Navigate to='/login'/>} />
           </Routes>
 
         
