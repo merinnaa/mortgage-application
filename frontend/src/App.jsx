@@ -56,10 +56,10 @@ function App() {
             <Route path="/" element= {<Front/>} />
             <Route path="/registration" element={<RegistrationSection />} />
   {/* <Route path="/register" element={<Register setAuth={setAuth} />} /> */}
-  <Route path="/thankyou" element={<ThankYou />} />
+  {/* <Route path="/thankyou" element={<ThankYou />} /> */}
   <Route path="/registerlender" element={<RegisterLender />} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
-            <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/thankyou"/> }/>
+            <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="dashboard"/> }/>
             <Route path="/dashboard" element= {isAuthenticated ? < Dashboard  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
 <Route path='/status' element={isAuthenticated ? <Status setAuth={setAuth}/> : <Navigate to='/login'/>} />
           </Routes>

@@ -18,7 +18,7 @@ const navigate = useNavigate();
         });
 
         const parseRes = await response.json();
-        setName(parseRes.name.toUpperCase());
+        setName(parseRes.first_name.toUpperCase());
       } catch (error) {
         console.error(error.message);
       }
@@ -67,7 +67,7 @@ const navigate = useNavigate();
 
   return (
     <div className="w-full min-h-screen bg-stone-100 flex flex-col items-center justify-start pt-20 mt-200">
-      <h1 className="text-5xl font-bold mb-10">Welcome, {name}!</h1>
+      <h1 className="text-5xl font-bold mb-10">Welcome, {name}</h1>
 
       <form onSubmit={onSubmit} className="bg-white p-12 rounded-lg flex flex-col gap-[59px] items-center w-full max-w-2xl mb-10">
       
