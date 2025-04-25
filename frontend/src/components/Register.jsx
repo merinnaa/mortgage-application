@@ -60,7 +60,7 @@ setErrors({})
       localStorage.setItem("token", parseRes.token);
       setAuth(true);
      toast.success("Registered Successfully")
-     navigate("/dashboard")  
+     navigate("registration/thankYou")  
     }else {
       setAuth(false)
      toast.error(parseRes)

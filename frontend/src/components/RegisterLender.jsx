@@ -50,8 +50,8 @@ setErrors({})
     try {
      const body = {email, password, firstName, lastName, employeeId,role};
 
-     const response = await fetch("https://mortgage-application-server.vercel.app/auth/register", {
-       method: "POST",
+      const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
+        method: "POST",
         headers : {"Content-Type" : "application/json"},
         body: JSON.stringify(body)
         

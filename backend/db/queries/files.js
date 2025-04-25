@@ -23,7 +23,7 @@ const getFile = (user_id, field, filename, mimetype, size, file_data) => {
     throw new Error(`Invalid field name: ${field}`);
   }
 
-  const query = `INSERT INTO ${table} (user_id, filename, mimetype, size, file_data)
+  const query = `INSERT INTO ${table}_doc (user_id, filename, mimetype, size, file_data)
                  VALUES ($1, $2, $3, $4, $5)`;
 
   return db.query(query, [user_id, filename, mimetype, size, file_data]);
