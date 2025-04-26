@@ -165,33 +165,32 @@ async function dataExtraction(field) {
       db.query(insertData, value);
       console.log("Data populated into tables");
     } catch (err) {
-      if (err.code === '23505') {
-        if (err.constraint === 'drivers_license_license_number_key') {
+      switch (err.constraint) {
+        case 'drivers_license_license_number_key':
           return {
             success: false,
             status: 409,
             message: 'License number already exists',
             detail: err.detail
           };
-        } else if (err.constraint === 'w2_records_employee_ssn_key') {
+        case 'w2_records_employee_ssn_key':
           return {
             success: false,
             status: 409,
             message: 'Social Security Number already registered',
             detail: err.detail
           };
-        }
-      } else {
-        console.log('Unexpected error:', err);
-        return {
-          success: false,
-          status: 500,
-          message: 'Server error. Please try again later.'
-        };
+        default:
+          return {
+            success: false,
+            status: 409,
+            message: 'Duplicate entry detected',
+            detail: err.detail
+          };
       }
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error of this :", error);
   }
 }
 
