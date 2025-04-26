@@ -23,7 +23,7 @@ const DocumentCard = ({title, status, createdAt, file_url}) => {
                         href={file_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="justify-start text-zinc-800 text-base font-bold font-['Inter'] leading-normal"
+                        className="justify-start text-zinc-800 text-base font-bold font-['Inter'] leading-normal cursor-pointer"
                         >
                             View pdf
                         </a>
@@ -37,7 +37,7 @@ const DocumentCard = ({title, status, createdAt, file_url}) => {
                     <img src={upload} />
                         
                     </div>
-                    <button className="justify-start text-red-400 text-base font-bold font-['Inter'] underline leading-normal">Add new</button>
+                    <button className="justify-start text-red-400 text-base font-bold font-['Inter']  leading-normal hover:underline">Add new</button>
                 </div>
             </div>
     </>
