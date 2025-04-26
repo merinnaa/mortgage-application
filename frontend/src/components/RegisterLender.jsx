@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
      password:"",
     first_name:"",
     last_name:"",
+    institution:"",
     confirmPassword: "",
     employee_id: "",
     role:""
@@ -17,7 +18,7 @@ import { useNavigate } from "react-router-dom";
    const [errors, setErrors] = useState({});
 
 const navigate = useNavigate();
-   const {email, password, first_name, last_name, confirmPassword,employee_id, role } = inputs;
+   const {email, password, first_name, last_name,institution, confirmPassword,employee_id, role } = inputs;
 
    const onChange = (e) => {
      setInputs({ ...inputs, [e.target.name]: e.target.value});
@@ -34,6 +35,7 @@ if(!first_name) newErrors.first_name = "First name is required";
 if(!last_name) newErrors.last_name = "Last Name is required";
 if(!email) newErrors.email = "Email is is required";
 if(!password) newErrors.password ="Password is required";
+if(!institution) newErrors.institution ="Institution is required";
 
 if (!confirmPassword || confirmPassword !== password) {
   newErrors.confirmPassword = "Passwords do not match";
@@ -48,11 +50,11 @@ if (Object.keys(newErrors).length > 0) {
 setErrors({})
 
     try {
-     const body = {email, password, first_name, last_name, employee_id,role};
+     const body = {email, password, first_name, last_name,institution, employee_id,role};
 
       const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
         method: "POST",
-        headers : {"Content-Type" : "application/json"},
+        headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(body)
         
     });
@@ -171,6 +173,23 @@ setErrors({})
                     </div>
                     {errors.confirmPassword && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.confirmPassword}</div>}
                 </div>
+
+                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
+                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
+                    ${ errors.institution ? ' outline-orange-600':' outline-black' }
+  `}>
+                        <input
+                        
+                        type="text" 
+                        name="institution"
+                        placeholder="Institution"
+                        value={institution}
+                        onChange={(e) => onChange(e)}
+                        className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
+                    </div>
+                    {errors.institution && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.institution}</div>}
+                </div>
+
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
                     ${ errors.employeeId ? ' outline-orange-600':' outline-black' }
@@ -207,7 +226,7 @@ setErrors({})
                         </select>
 
                     </div>
-                    {errors.employeeId && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employeeId}</div>}
+                    {errors.role && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employeeId}</div>}
                 </div>
 
             </div>
