@@ -7,17 +7,17 @@ import { useNavigate } from "react-router-dom";
    const [inputs, setInputs] = useState({
      email:"",
      password:"",
-    firstName:"",
-    lastName:"",
+    first_name:"",
+    last_name:"",
     confirmPassword: "",
-    employeeId: "",
+    employee_id: "",
     role:""
    })
 
    const [errors, setErrors] = useState({});
 
 const navigate = useNavigate();
-   const {email, password, firstName, lastName, confirmPassword,employeeId, role } = inputs;
+   const {email, password, first_name, last_name, confirmPassword,employee_id, role } = inputs;
 
    const onChange = (e) => {
      setInputs({ ...inputs, [e.target.name]: e.target.value});
@@ -30,16 +30,16 @@ const navigate = useNavigate();
     console.log(inputs)
 
 const newErrors = ({});
-if(!inputs.firstName) newErrors.firstName = "First name is required";
-if(!inputs.lastName) newErrors.lastName = "Last Name is required";
-if(!inputs.email) newErrors.email = "Email is is required";
-if(!inputs.password) newErrors.password ="Password is required";
+if(!first_name) newErrors.first_name = "First name is required";
+if(!last_name) newErrors.last_name = "Last Name is required";
+if(!email) newErrors.email = "Email is is required";
+if(!password) newErrors.password ="Password is required";
 
-if (!inputs.confirmPassword || inputs.confirmPassword !== inputs.password) {
+if (!confirmPassword || confirmPassword !== password) {
   newErrors.confirmPassword = "Passwords do not match";
 }
-if(!inputs.employeeId) newErrors.employeeId ="Employee Id is required";
-if(!inputs.role) newErrors.role ="Select a role ";
+if(!employee_id) newErrors.employee_id ="Employee Id is required";
+if(!role) newErrors.role ="Select a role ";
 if (Object.keys(newErrors).length > 0) {
   setErrors(newErrors);
   return; 
@@ -48,7 +48,7 @@ if (Object.keys(newErrors).length > 0) {
 setErrors({})
 
     try {
-     const body = {email, password, firstName, lastName, employeeId,role};
+     const body = {email, password, first_name, last_name, employee_id,role};
 
       const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
         method: "POST",
@@ -60,8 +60,8 @@ setErrors({})
      const parseRes = await response.json();
 
      if(parseRes.token) {
-      localStorage.setItem("token", parseRes.token);
-      setAuth(true);
+      // localStorage.setItem("token", parseRes.token);
+      // setAuth(true);
      toast.success("Registered Successfully")
      navigate("/thankyou")  
     }else {
@@ -101,31 +101,31 @@ setErrors({})
   `}>
                         <input
                         
-                        name="firstName"
+                        name="first_name"
                         placeholder="First Name"
                         type="text"
-                        value={inputs.firstName}
+                        value={first_name}
            onChange={(e) => onChange(e)}
                          className="w-full h-full px-4  placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"/>
                          
                     </div>
-                    {errors.firstName && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.firstName}</div>}
+                    {errors.first_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.first_name}</div>}
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
                     ${ errors.lastName? ' outline-orange-600':' outline-black' }
   `}>
                         <input 
-                        name="lastName"
+                        name="last_name"
                         placeholder="Last Name"
                         type="text"
                         
-                        value={inputs.lastName}
+                        value={last_name}
            onChange={(e) => onChange(e)}
                         
                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
                     </div>
-                    {errors.lastName && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.lastName}</div>}
+                    {errors.last_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.last_name}</div>}
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
@@ -135,7 +135,7 @@ setErrors({})
                         type="email"
                         placeholder="Email Address"
                         name="email"
-                        value={inputs.email}
+                        value={email}
           onChange={(e) => onChange(e)}
                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
                     </div>
@@ -149,7 +149,7 @@ setErrors({})
                         type="password"
                         name="password"
                         placeholder="Password"
-                        value={inputs.password}
+                        value={password}
                                  onChange={(e) => onChange(e)}
 
                          className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
@@ -165,7 +165,7 @@ setErrors({})
                         type="password" 
                         name="confirmPassword"
                         placeholder="Confirm Password"
-                        value={inputs.confirmPassword}
+                        value={confirmPassword}
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
                     </div>
@@ -178,13 +178,13 @@ setErrors({})
                         <input
                         
                         type="text" 
-                        name="employeeId"
+                        name="employee_id"
                         placeholder="Employee ID"
-                        value={inputs.employeeId}
+                        value={employee_id}
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
                     </div>
-                    {errors.employeeId && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employeeId}</div>}
+                    {errors.employeeId && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employee_id}</div>}
                 </div>
                 
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
@@ -196,7 +196,7 @@ setErrors({})
                          
                         name="role"
                         placeholder="Select user type"
-                        value={inputs.role}
+                        value={role}
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" 
                          >
@@ -216,7 +216,7 @@ setErrors({})
 <button 
 
 className={`w-full h-full  p-2.5 rounded-[48px] text-Button-Text-Inactive/20 text-base font-['SF_Pro'] leading-snug
-${  inputs.firstName && inputs.lastName &&  inputs.email &&  inputs.password &&  inputs.confirmPassword && inputs.employeeId && inputs.role ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"}
+${  inputs.first_name && inputs.last_name &&  inputs.email &&  inputs.password &&  inputs.confirmPassword && inputs.employee_id && inputs.role ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"}
 `}>Sign up</button>
 </div>
     </form>

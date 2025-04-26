@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {useState} from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -57,10 +57,10 @@ setErrors({})
      const parseRes = await response.json();
 
      if(parseRes.token) {
-      localStorage.setItem("token", parseRes.token);
-      setAuth(true);
+      // localStorage.setItem("token", parseRes.token);
+      // setAuth(true);
      toast.success("Registered Successfully")
-     navigate("registration/thankYou")  
+     navigate("/thankyou")  
     }else {
       setAuth(false)
      toast.error(parseRes)
