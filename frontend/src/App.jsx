@@ -1,7 +1,7 @@
 import React, {Fragment, useState , useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import thankYou from './components/thankYou';
+
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,6 +15,7 @@ import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterLender from './components/RegisterLender'
+import ThankYou from './components/ThankYou'
 import RegistrationSection from './components/RegistrationSection';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,7 +55,7 @@ function App() {
             <Route path="/" element= {<Front/>} />
             <Route path="/registration" element={<RegistrationSection />} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/thankyou" element={<thankYou />} />
+            <Route path="/thankyou" element={<ThankYou />} />
             <Route path="/registerlender" element={<RegisterLender />} />
             <Route path="/login" element= { !isAuthenticated ? < Login  setAuth={setAuth}/> : <Navigate to="/dashboard"/> }/>
             <Route path="/register" element= {!isAuthenticated ? < Register  setAuth={setAuth}/> : <Navigate to="/login"/> }/>
