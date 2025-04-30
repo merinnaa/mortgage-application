@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const ThankYou = () => {
+const thankYou = () => {
 return(
     <>
       <div className="w-full h-[982px] relative bg-stone-100 overflow-hidden">
@@ -22,4 +22,4 @@ return(
   )
 }
 
-export default ThankYou
+export default thankYou

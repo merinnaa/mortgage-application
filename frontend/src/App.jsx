@@ -15,7 +15,7 @@ import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterLender from './components/RegisterLender';
-import ThankYou from './components/thankYou';
+import thankYou from './components/thankYou';
 import RegistrationSection from './components/RegistrationSection';
 import LenderLogin from './components/LenderLogin'
 import Status from './components/Status';
@@ -62,7 +62,7 @@ function App() {
 
   <Route path="/register" element={<Register setAuth={setAuth} />} />
   <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
-  <Route path="/thankyou" element={<ThankYou />} />
+  <Route path="/thankyou" element={<thankYou />} />
 
   <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
   <Route path="/login-lender" element={!isAuthenticated ? <LenderLogin setAuth={setAuth} /> : <Navigate to="/admin-dashboard" />} />
