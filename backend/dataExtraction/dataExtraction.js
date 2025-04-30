@@ -4,7 +4,7 @@ global.ReadableStream = require("stream/web").ReadableStream;
 global.Blob = require("buffer").Blob;
 global.DOMException = require("node-domexception");
 
-const db = require("../db/db.js");
+const {db} = require("../db/db.js");
 const { fetch, Headers } = require("undici");
 
 globalThis.fetch = fetch;
