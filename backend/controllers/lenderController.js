@@ -62,7 +62,7 @@ const login = async (req, res) => {
     //2. check if lender doesn't exist(if not then we throw error);
     
     const lender = await lendersDb.getLendersByEmployeeIdRoleInstitution(employee_id,role,institution);
-    console.log(lender.rows)
+    
      if( lender.rows.length === 0 ){
       return res.status(401).json("Lender Id or password is incorrect!!")
      }
