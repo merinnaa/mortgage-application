@@ -15,7 +15,7 @@ import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterLender from './components/RegisterLender';
-import ThankYou from './components/ThankYou';
+import ThankYou from './components/thankYou';
 import RegistrationSection from './components/RegistrationSection';
 import LenderLogin from './components/LenderLogin'
 import Status from './components/Status';

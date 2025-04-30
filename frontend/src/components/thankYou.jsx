@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+
 const ThankYou = () => {
-  
-  return (
+return(
     <>
       <div className="w-full h-[982px] relative bg-stone-100 overflow-hidden">
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[541px] p-12 bg-white rounded-lg inline-flex flex-col justify-start items-center gap-11">
