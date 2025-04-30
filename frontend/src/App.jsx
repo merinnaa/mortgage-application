@@ -14,8 +14,8 @@ import Dashboard from './components/Dashboard';
 import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RegisterLender from './components/RegisterLender'
-import ThankYou from './components/ThankYou'
+import RegisterLender from './components/RegisterLender';
+import ThankYou from './components/ThankYou';
 import RegistrationSection from './components/RegistrationSection';
 import LenderLogin from './components/LenderLogin'
 import Status from './components/Status';
