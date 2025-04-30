@@ -17,7 +17,10 @@ import Footer from './components/Footer';
 import RegisterLender from './components/RegisterLender'
 import ThankYou from './components/ThankYou'
 import RegistrationSection from './components/RegistrationSection';
+import LenderLogin from './components/LenderLogin'
 import Status from './components/Status';
+import AdminDashboard from './components/AdminDashboard';
+import SupervisorDashboard from './components/SupervisorDashboard';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -58,12 +61,21 @@ function App() {
   <Route path="/registration" element={<RegistrationSection />} />
 
   <Route path="/register" element={<Register setAuth={setAuth} />} />
-  <Route path="/registerlender" element={<RegisterLender setAuth={setAuth} />} />
+  <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
   <Route path="/thankyou" element={<ThankYou />} />
 
   <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
+  <Route path="/login-lender" element={!isAuthenticated ? <LenderLogin setAuth={setAuth} /> : <Navigate to="/admin-dashboard" />} />
+  
+  
   <Route path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login" />} />
-  <Route path="/status" element={isAuthenticated ? <Status setAuth={setAuth} /> : <Navigate to="/login" />} />
+  
+  
+  <Route path="/admin-dashboard" element={isAuthenticated ? <AdminDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
+  
+  
+  <Route path="/supervisor-dashboard" element={isAuthenticated ? <SupervisorDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
+<Route path="/status" element={isAuthenticated ? <Status setAuth={setAuth} /> : <Navigate to="/login" />} />
 </Routes>
 
         

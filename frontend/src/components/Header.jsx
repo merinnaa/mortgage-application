@@ -43,7 +43,13 @@ const navigate = useNavigate();
           to="/login"
           className="text-teal-500 text-base leading-snug font-sans hover:underline"
         >
-          Log in
+          Log in as borrower
+        </Link>
+        <Link
+          to="/loginlender"
+          className="text-teal-500 text-base leading-snug font-sans hover:underline"
+        >
+          Log in as lender
         </Link>
       
       </>
@@ -82,7 +88,14 @@ const navigate = useNavigate();
              className="block w-full text-teal-500 text-center"
              onClick={() => setIsOpen(false)}
            >
-             Log in
+             Log in as borrower
+           </Link>
+           <Link
+             to="/loginlender"
+             className="block w-full text-teal-500 text-center"
+             onClick={() => setIsOpen(false)}
+           >
+             Log in as lender
            </Link>
            </>
           ) : (
