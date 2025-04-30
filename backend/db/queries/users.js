@@ -1,4 +1,7 @@
-const db = require('../db');
+const {db,dbApi} = require('../db');
+
+// console.log(db)
+// console.log(dbApi)
 
 //get users by email
 const getUsersByEmail = (email) => {
@@ -10,6 +13,12 @@ const getUsersByEmail = (email) => {
 //Get users by id 
 const getUsersById = (id) => {
   return db.query('SELECT * FROM users WHERE id=$1;',[id])
+      
+            
+}
+// Get all users 
+const getUsersTable = () => {
+  return db.query('SELECT * FROM users;')
       
             
 }
@@ -25,4 +34,16 @@ const getUsersByIdEmail = (id,email) => {
       
             
 }
-module.exports = {getUsersByEmail,createNewUser,getUsersById,getUsersByIdEmail}
+
+// const getUserById = async (id) => {
+//   try {
+//     const data = await db.query('SELECT * FROM irs_w2_forms WHERE id=$1;', [id]);
+//     console.log(data.rows); // rows is the actual result set
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// getUserById(2);
+
+module.exports = {getUsersByEmail,createNewUser,getUsersById,getUsersByIdEmail, getUsersTable}

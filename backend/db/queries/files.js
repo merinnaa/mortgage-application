@@ -1,4 +1,4 @@
-const db = require('../db');
+const {db, dbApi} = require('../db');
 
 
 /**
@@ -28,5 +28,6 @@ const getFile = (user_id, field, filename, mimetype, size, file_data) => {
 
   return db.query(query, [user_id, filename, mimetype, size, file_data]);
 };
+
 
 module.exports = { getFile };
