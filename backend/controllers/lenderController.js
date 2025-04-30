@@ -1,7 +1,8 @@
 
 const jwtGenerator = require("../utils/jwtGenerator");
 const bcrypt = require("bcrypt")
-const lendersDb = require("../db/queries/lenders")
+const lendersDb = require("../db/queries/lenders");
+const jwtGenLender = require("../utils/jwtGenLender");
 
 
 //First time registering a lender
@@ -36,7 +37,7 @@ const lendersDb = require("../db/queries/lenders")
      
       
     //5.Once registered successfully , generate a token 
-      const token = jwtGenerator(newLender.rows[0].id)
+      const token = jwtGenLender(newLender.rows[0].id)
       res.json({token});
 
 
@@ -56,13 +57,14 @@ const lendersDb = require("../db/queries/lenders")
 const login = async (req, res) => {
   try {
     //1. destructure the req.body
-    const {email, password} = req.body;
+    const {role, institution, employee_id, password } = req.body;
 
     //2. check if lender doesn't exist(if not then we throw error);
     
-    const lender = await lendersDb.getLendersByEmail(email);
+    const lender = await lendersDb.getLendersByEmployeeIdRoleInstitution(employee_id,role,institution);
+    console.log(lender.rows)
      if( lender.rows.length === 0 ){
-      return res.status(401).json("Lender email or password is incorrect!!")
+      return res.status(401).json("Lender Id or password is incorrect!!")
      }
 
      //3. otherwise check if the password is correct, compare it with database password
@@ -70,11 +72,11 @@ const login = async (req, res) => {
     const validPassword = await bcrypt.compare(password, lender.rows[0].password);
 
     if(!validPassword) {
-      return res.status(401).json("Lender email or password is incorrect!!")
+      return res.status(401).json("Lender id or password is incorrect!!")
     }
 
     //4. if password is correct then generate token 
-    const token = jwtGenerator(lender.rows[0].id,lender.rows[0].email);
+    const token = jwtGenLender(lender.rows[0].id,lender.rows[0].employee_id, lender.rows[0].institution,lender.rows[0].role);
     res.json({token})
 
     

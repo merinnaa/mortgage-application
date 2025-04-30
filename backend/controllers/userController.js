@@ -14,7 +14,6 @@ const usersDb = require("../db/queries/users")
     //2. check if the user exists in DB (if user exists throw error)
       
       const user = await usersDb.getUsersByEmail(email);
-      console.log("here is users",user)
       if(user.rows.length !== 0){
         return res.status(401).json("User already exists")
       }
