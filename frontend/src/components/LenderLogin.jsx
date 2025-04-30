@@ -9,10 +9,13 @@ const Login = ({setAuth})=> {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     employee_id:"",
-    role:""
+    role:"",
+    institution:"",
+    password: ""
+
   })
 
-  const {employee_id, role} = inputs;
+  const {employee_id, role, institution, password} = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value});
@@ -21,9 +24,9 @@ const Login = ({setAuth})=> {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = {employee_id, role};
+      const body = {employee_id, role, institution, password};
 
-      const response = await fetch("https://mortgage-application-server.vercel.app/auth/login", {
+      const response = await fetch("https://mortgage-application-server.vercel.app/auth/login-lender", {
         method: "POST",
         headers : {"Content-Type" : "application/json"},
         body: JSON.stringify(body)
@@ -91,21 +94,47 @@ const Login = ({setAuth})=> {
   </div>
 </div>
 
-            <div className="self-stretch flex flex-col justify-start items-start gap-4">
+<div className="self-stretch flex flex-col justify-start items-start gap-2.5">
+                    <div className="w-full h-10 px-3 rounded-lg bg-white border border-black focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all">
+                        <input 
+                         type="text"
+                         name = "institution"
+                         placeholder="Institution"
+                         
+                         value={institution}
+                         onChange={(e) => onChange(e)}
+                        className="w-full h-full text-zinc-800 text-base font-normal font-['Inter'] leading-normal outline-none bg-transparent" / >
+                    </div>
+                </div>
+
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className="self-stretch h-10 px-1 rounded-lg outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-center items-center gap-2.5">
+                    <div className="w-full h-10 px-3 rounded-lg bg-white border border-black focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all">
                         <input 
                          type="text"
                          name = "employee_id"
-                         placeholder="Employee ID *"
+                         placeholder="Employee ID"
                          
                          value={employee_id}
                          onChange={(e) => onChange(e)}
-                        className="flex-1 h-6 justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal" / >
+                        className="w-full h-full text-zinc-800 text-base font-normal font-['Inter'] leading-normal outline-none bg-transparent" / >
                     </div>
                 </div>
                
-            </div>
+          
+
+                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
+                    <div className="w-full h-10 px-3 rounded-lg bg-white border border-black focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all">
+                        <input 
+                         type="password"
+                         name = "password"
+                         placeholder="Password"
+                         
+                         value={password}
+                         onChange={(e) => onChange(e)}
+                        className="w-full h-full text-zinc-800 text-base font-normal font-['Inter'] leading-normal outline-none bg-transparent" / >
+                    </div>
+                </div>
+
         </div>
         <div className="self-stretch h-10 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
             <button className="justify-start text-white text-base font-['SF_Pro'] leading-snug">Log in</button>

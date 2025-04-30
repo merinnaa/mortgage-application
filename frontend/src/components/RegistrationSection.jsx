@@ -18,7 +18,7 @@ const handleSubmit = () => {
     if (selectedRole === "borrower") {
         navigate('/register');
     }else if (selectedRole === "lender")
-    navigate('/registerlender');
+    navigate('/register-lender');
 }
 
   return (

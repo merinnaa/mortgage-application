@@ -46,7 +46,7 @@ const navigate = useNavigate();
           Log in as borrower
         </Link>
         <Link
-          to="/loginlender"
+          to="/login-lender"
           className="text-teal-500 text-base leading-snug font-sans hover:underline"
         >
           Log in as lender
