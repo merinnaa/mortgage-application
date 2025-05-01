@@ -99,7 +99,7 @@ setErrors({})
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div 
                     className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.firstName ? ' outline-orange-600':' outline-black' }
+                    ${ errors.first_name ? ' outline-orange-600':' outline-black' }
   `}>
                         <input
                         
@@ -115,7 +115,7 @@ setErrors({})
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
                     <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.lastName? ' outline-orange-600':' outline-black' }
+                    ${ errors.last_name? ' outline-orange-600':' outline-black' }
   `}>
                         <input 
                         name="last_name"
@@ -203,7 +203,7 @@ setErrors({})
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
                     </div>
-                    {errors.employeeId && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employee_id}</div>}
+                    {errors.employee_id && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employee_id}</div>}
                 </div>
                 
                 <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
@@ -226,7 +226,7 @@ setErrors({})
                         </select>
 
                     </div>
-                    {errors.role && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employeeId}</div>}
+                    {errors.role && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.role}</div>}
                 </div>
 
             </div>
