@@ -59,18 +59,18 @@ setErrors({})
         
     });
 
-     const parseRes = await response.json();
+    //  const parseRes = await response.json();
 
-     if(parseRes.token) {
+    //  if(parseRes.token) {
       // localStorage.setItem("token", parseRes.token);
       // setAuth(true);
      toast.success("Registered Successfully")
      navigate("/thankyou")  
-    }else {
-      setAuth(false)
-     toast.error(parseRes)
+    // }else {
+    //   setAuth(false)
+    //  toast.error(parseRes)
         
-    }
+    // }
       
   } catch (error) {
    console.error(error.message)
