@@ -214,7 +214,7 @@ setErrors({})
                         
                          
                         name="role"
-                        placeholder="Select user type"
+                        // placeholder="Select user type"
                         value={role}
                         onChange={(e) => onChange(e)}
                         className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" 
