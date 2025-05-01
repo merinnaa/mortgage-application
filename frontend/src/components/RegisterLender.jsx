@@ -221,7 +221,7 @@ setErrors({})
                          >
                         <option value="">Select user type</option>
                         <option value="admin">Admin</option>
-                        <option value="reviewer">Reviewer</option>
+                        <option value="supervisor">Reviewer</option>
                        
                         </select>
 
