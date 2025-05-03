@@ -59,25 +59,18 @@ setErrors({})
         
     });
 
-    //  const parseRes = await response.json();
+      const parseRes = await response.json();
 
-    //  if(parseRes.token) {
+     if(parseRes.token) {
       // localStorage.setItem("token", parseRes.token);
       // setAuth(true);
      toast.success("Registered Successfully")
-<<<<<<< HEAD
      navigate("/lender-thankyou")  
     }else {
       setAuth(false)
      toast.error(parseRes)
-=======
-     navigate("/thankyou")  
-    // }else {
-    //   setAuth(false)
-    //  toast.error(parseRes)
->>>>>>> ab3702577623cfb22185b01f102e1e54cf0eda72
         
-    // }
+     }
       
   } catch (error) {
    console.error(error.message)
