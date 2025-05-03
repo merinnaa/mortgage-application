@@ -21,6 +21,7 @@ import LenderLogin from './components/LenderLogin'
 import Status from './components/Status';
 import AdminDashboard from './components/AdminDashboard';
 import SupervisorDashboard from './components/SupervisorDashboard';
+import LenderThankYou from './components/LenderThankYou';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -62,7 +63,8 @@ function App() {
 
   <Route path="/register" element={<Register setAuth={setAuth} />} />
   <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
-  <Route path="/thankyou" element={<thankYou />} />
+  <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
+  <Route path="/lender-thankyou" element={<LenderThankYou />} />
 
   <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
   <Route path="/login-lender" element={!isAuthenticated ? <LenderLogin setAuth={setAuth} /> : <Navigate to="/admin-dashboard" />} />
