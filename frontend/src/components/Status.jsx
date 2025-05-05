@@ -9,7 +9,7 @@ const Status = () => {
     useEffect(() => {
       const fetchDocuments = async () => {
         try {
-          // Instead of API call, use mock data
+          
           const mockData = [
             {
               doc_type: "ID Document",

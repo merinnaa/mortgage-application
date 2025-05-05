@@ -44,7 +44,7 @@ const Login = ({setAuth})=> {
         } else if (role === "supervisor") {
           navigate("/supervisor-dashboard");
         } else {
-          navigate("/dashboard"); // fallback
+          navigate("/dashboard"); 
         }
       
       } else {

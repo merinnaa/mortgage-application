@@ -22,6 +22,7 @@ import Status from './components/Status';
 import AdminDashboard from './components/AdminDashboard';
 import SupervisorDashboard from './components/SupervisorDashboard';
 import LenderThankYou from './components/LenderThankYou';
+import Application from './components/Application';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -67,13 +68,14 @@ function App() {
   <Route path="/lender-thankyou" element={<LenderThankYou />} />
 
   <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
-  <Route path="/login-lender" element={!isAuthenticated ? <LenderLogin setAuth={setAuth} /> : <Navigate to="/admin-dashboard" />} />
+  <Route path="/login-lender" element={<LenderLogin setAuth={setAuth} />} />
   
   
   <Route path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login" />} />
   
   
   <Route path="/admin-dashboard" element={isAuthenticated ? <AdminDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
+  <Route path="/application" element={isAuthenticated ? <Application setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
   
   
   <Route path="/supervisor-dashboard" element={isAuthenticated ? <SupervisorDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
