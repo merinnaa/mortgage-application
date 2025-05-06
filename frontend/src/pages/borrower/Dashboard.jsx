@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FileCard from './FileCard';
+import FileCard from '../../components/FileCard';
 import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
   const [name, setName] = useState("");

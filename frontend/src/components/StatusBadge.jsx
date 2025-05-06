@@ -4,7 +4,7 @@ import clock from "../images/clock.png";
 import alert from "../images/alert.png";
 
 const getOverallStatus = (statuses) => {
-  // Priority: Pending Review > Flagged > Completed
+ 
   if (statuses.includes("Pending Review")) return "Pending Review";
   if (statuses.includes("Flagged")) return "Flagged";
   if (statuses.every(status => status === "Completed")) return "Completed";

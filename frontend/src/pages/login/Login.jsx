@@ -35,7 +35,7 @@ const Login = ({setAuth})=> {
         localStorage.setItem("token", parseRes.token);
         setAuth(true);
         toast.success("Login Successfully!!")
-        
+        navigate("/dashboard");
       }else {
         setAuth(false)
         toast.error(parseRes)
@@ -96,17 +96,15 @@ const Login = ({setAuth})=> {
     <>
 
 
-<div className="w-full h-[982px] relative bg-stone-100 overflow-hidden">
+
    
     <form 
     onSubmit = {onSubmitForm}
-    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[541px] p-12 bg-white rounded-lg inline-flex flex-col justify-start items-center "
+   
 >
         <div className="self-stretch flex flex-col justify-start items-start gap-12">
             <div className="self-stretch flex flex-col justify-start items-center gap-4">
-                <h1 className="self-stretch text-center justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Log in</h1>
-                <div className="self-stretch text-center justify-start"><span class="text-zinc-800 text-base font-normal font-['Inter'] leading-normal">New to Fundify? </span><Link  to="/register" class="text-teal-500 text-base font-normal font-['Inter'] leading-normal">Sign up for free</Link></div>
-            
+                
              
           {/* Google Login Button */ }
 
@@ -163,24 +161,26 @@ const Login = ({setAuth})=> {
                 </div>
             </div>
         </div>
-        <div className='w-full flex justify-center mt-1'>
-            <button 
-            disabled={!email || !password}
-            type="submit"
-            className={` px-10 py-2.5 rounded-[48px]  text-base font-semibold transition
-            
-            ${
-              email && password ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"
-            }`}
-            >Log in</button>
-        </div>
+        <div className="w-full mt-4">
+  <button
+    disabled={!email || !password}
+    type="submit"
+    className={`w-full h-10 p-2.5 rounded-[48px] text-base font-semibold leading-snug transition 
+      ${email && password ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500 cursor-not-allowed"}
+    `}
+  >
+    Log in
+  </button>
+</div>
+
+
 
        
        
 
     </form>
     
-</div>
+
 
       
     </>

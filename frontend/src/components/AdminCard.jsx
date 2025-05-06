@@ -30,7 +30,7 @@ const AdminStatus = ({ name }) => {
       {/* Header and Status */}
       <div className="flex flex-col gap-4 w-full">
         <div className="flex justify-between items-center">
-          <div className="text-zinc-800 text-base font-bold">{name}, Application</div>
+          <div className="text-zinc-800 text-base font-bold">{name}, Applications</div>
           <button
             type="button"
             onClick={toggleArrow}

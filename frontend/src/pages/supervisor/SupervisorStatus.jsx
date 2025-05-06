@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import StatusBadge from './StatusBadge';
+import StatusBadge from '../../components/StatusBadge';
 
 const SupervisorStatus = ({name}) => {
 
@@ -57,7 +57,7 @@ const SupervisorStatus = ({name}) => {
         <div className="flex flex-col gap-4 w-full">
           <div className="flex items-center gap-2">
             <StatusBadge status={idStatus} />
-            <span className="text-zinc-800 text-base font-normal">ID Verification</span>
+            <span className="text-zinc-800 text-base font-normal">ID Verification good</span>
           </div>
 
           <div className="flex items-center gap-2">

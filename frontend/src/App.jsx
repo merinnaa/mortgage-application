@@ -8,21 +8,22 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 //import components
-import Login from "./components/Login"
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
+import Login from "./pages/login/Login"
+import Register from './pages/registration/Register';
+import Dashboard from './pages/borrower/Dashboard';
 import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RegisterLender from './components/RegisterLender';
-import thankYou from './components/thankYou';
-import RegistrationSection from './components/RegistrationSection';
-import LenderLogin from './components/LenderLogin'
-import Status from './components/Status';
-import AdminDashboard from './components/AdminDashboard';
-import SupervisorDashboard from './components/SupervisorDashboard';
-import LenderThankYou from './components/LenderThankYou';
+import RegisterLender from './pages/registration/RegisterLender';
+import thankYou from './pages/thankyou/thankYou';
+import RegistrationSection from './pages/RegistrationSection';
+import LenderLogin from './pages/login/LenderLogin'
+import Status from './pages/borrower/Status';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import SupervisorDashboard from './pages/supervisor/SupervisorDashboard';
+import LenderThankYou from './pages/thankyou/LenderThankYou';
 import Application from './components/Application';
+import SignIn from './pages/login/SignIn';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -67,19 +68,20 @@ function App() {
   <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
   <Route path="/lender-thankyou" element={<LenderThankYou />} />
 
-  <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
+  <Route path="/login" element={ <Login setAuth={setAuth} /> } />
   <Route path="/login-lender" element={<LenderLogin setAuth={setAuth} />} />
+  <Route path="/sign-in" element={<SignIn setAuth={setAuth} />} />
   
   
-  <Route path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login" />} />
+  <Route path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/sign-in" />} />
   
   
-  <Route path="/admin-dashboard" element={isAuthenticated ? <AdminDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
-  <Route path="/application" element={isAuthenticated ? <Application setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
+  <Route path="/admin-dashboard" element={isAuthenticated ? <AdminDashboard setAuth={setAuth} /> : <Navigate to="/sign-in" />} />
+  <Route path="/application" element={isAuthenticated ? <Application setAuth={setAuth} /> : <Navigate to="/sign-in" />} />
   
   
-  <Route path="/supervisor-dashboard" element={isAuthenticated ? <SupervisorDashboard setAuth={setAuth} /> : <Navigate to="/login-lender" />} />
-<Route path="/status" element={isAuthenticated ? <Status setAuth={setAuth} /> : <Navigate to="/login" />} />
+  <Route path="/supervisor-dashboard" element={isAuthenticated ? <SupervisorDashboard setAuth={setAuth} /> : <Navigate to="/sign-in" />} />
+<Route path="/status" element={isAuthenticated ? <Status setAuth={setAuth} /> : <Navigate to="/sign-in" />} />
 </Routes>
 
         

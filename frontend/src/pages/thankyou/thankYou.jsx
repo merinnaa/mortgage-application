@@ -15,7 +15,7 @@ return(
         </div>
     </div>
     <div className="w-36 h-10 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-        <Link to='/login' className="justify-start text-white text-base font-['SF_Pro'] leading-snug">Log In Now</Link>
+        <Link to='/sign-in' className="justify-start text-white text-base font-['SF_Pro'] leading-snug">Log In Now</Link>
     </div>
 </div>
   

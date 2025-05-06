@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from "react";
-import DocumentCard from './DocumentCard'
+import DocumentCard from '../../components/DocumentCard'
+
+
 const Status = () => {
 
   const [documents, setDocuments] = useState([]);

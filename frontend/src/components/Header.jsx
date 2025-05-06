@@ -40,6 +40,12 @@ const navigate = useNavigate();
           Create account
         </Link>
         <Link
+        to="/sign-in"
+        className="text-teal-500 text-base leading-snug font-sans hover:underline"
+        >
+          Log In
+        </Link>
+        {/* <Link
           to="/login"
           className="text-teal-500 text-base leading-snug font-sans hover:underline"
         >
@@ -50,7 +56,7 @@ const navigate = useNavigate();
           className="text-teal-500 text-base leading-snug font-sans hover:underline"
         >
           Log in as lender
-        </Link>
+        </Link> */}
       
       </>
         ) : (

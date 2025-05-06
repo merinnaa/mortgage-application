@@ -40,12 +40,13 @@ const Application = () => {
   }, []);
 
   return (
-    <div className="w-full h-[807px] relative bg-stone-100 overflow-hidden">
-      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 inline-flex flex-col justify-start items-start gap-8">
-        <div className="self-stretch h-14 justify-start text-black text-5xl font-bold leading-[56px] tracking-wide">
+    <div className="w-full min-h-screen bg-stone-100 flex justify-center py-16 px-4">
+      <div className="w-full max-w-[600px] flex flex-col gap-8">
+        <h1 className="text-black text-5xl font-bold leading-[56px] tracking-wide">
           Application, {applicantName}
-        </div>
-        <div className="w-[600px] flex flex-col justify-start items-start gap-8">
+        </h1>
+
+        <div className="flex flex-col gap-8">
           {documents.map((doc, index) => (
             <DocumentCard
               key={index}
