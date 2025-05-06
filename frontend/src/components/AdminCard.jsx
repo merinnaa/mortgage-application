@@ -31,20 +31,30 @@ const AdminStatus = ({ name }) => {
       <div className="flex flex-col gap-4 w-full">
         <div className="flex justify-between items-center">
           <div className="text-zinc-800 text-base font-bold">{name}, Applications</div>
-          <button
-            type="button"
-            onClick={toggleArrow}
-            className="text-xl text-blue-500"
-          >
-            {showDetails ? (
-              <FontAwesomeIcon icon={faAngleUp} />
-            ) : (
-              <FontAwesomeIcon icon={faChevronDown} />
-            )}
-          </button>
-        </div>
+          <div className="flex items-center gap-4">
+   
+    <button
+      type="button"
+      onClick={toggleArrow}
+      className="text-xl text-blue-500"
+    >
+      {showDetails ? (
+        <FontAwesomeIcon icon={faAngleUp} />
+      ) : (
+        <FontAwesomeIcon icon={faChevronDown} />
+      )}
+    </button>
+  </div>
+</div>
+<div className="flex justify-between items-center w-full">
+  {/* Status on the left */}
+  <StatusBadge statuses={allStatuses} />
 
-        <StatusBadge statuses={allStatuses} />
+  {/* Add new button on the right */}
+  <button className="text-red-400 text-base font-bold font-['Inter'] hover:underline">
+    verify
+  </button>
+</div>
       </div>
 
       {/* Divider */}
