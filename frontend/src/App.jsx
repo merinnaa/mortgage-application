@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-do
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ApplicantCard from './pages/admin/ApplicantCrad';
 
 
 //import components
