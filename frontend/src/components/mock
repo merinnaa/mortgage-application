@@ -1,0 +1,19 @@
+const Status = () => {
+  const [documents, setDocuments] = useState([]);
+  const [isVerified, setIsVerified] = useState(false); // track button click
+
+  // Mock data setup
+  useEffect(() => {
+    const mockData = [
+      {
+        doc_type: "ID Document",
+        create_at: "2025-04-24T16:00:00.000Z",
+        approved: true,
+      },
+      {
+        doc_type: "Bank Statement",
+        create_at: "2025-04-23T12:30:00.000Z",
+        approved: true,
+      },
+      {
+        doc_type: "Income Docume

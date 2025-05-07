@@ -6,7 +6,7 @@ import DocumentCard from '../../components/DocumentCard'
 const Status = () => {
 
   const [documents, setDocuments] = useState([]);
-
+  const [isVerified, setIsVerified] = useState(false);
  
     useEffect(() => {
       const fetchDocuments = async () => {
@@ -17,6 +17,7 @@ const Status = () => {
               doc_type: "ID Document",
               status: "Pending Review",
               create_at: "2025-04-24T16:00:00.000Z",
+              approved: true
             },
             {
               doc_type: "Bank Statement",

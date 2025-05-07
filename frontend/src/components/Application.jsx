@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import DocumentCard from './DocumentCard';
 
+
 const Application = () => {
   const [documents, setDocuments] = useState([]);
   const [searchParams] = useSearchParams();

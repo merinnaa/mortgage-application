@@ -1,4 +1,5 @@
 import React,{Fragment} from "react"
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import mega from '../images/mega-creator.png'
 import verification from '../images/verification.png'
@@ -7,6 +8,12 @@ import scale from '../images/scale.png'
 import '../App.css';
 
 const Front = () => {
+    const sectionRef = useRef(null);
+
+    const scrollToSection = () => {
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
   return (
     < >
     <section className="w-full flex flex-col-reverse justify-center sm:flex-row h-[2098px] relative bg-stone-100 overflow-hidden gap-[59px]">
@@ -17,12 +24,11 @@ const Front = () => {
         </div>
         <div className="w-48 h-10 flex flex-col justify-start items-start gap-2.5">
             <div className="self-stretch flex-1 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-                <Link
-                to='/register'
+                <button onClick={scrollToSection}
                  className="justify-start text-white text-base font-['SF_Pro'] leading-snug"
                  >
                   See how it works
-                </Link>
+                </button>
             </div>
         </div> */}
 
@@ -36,12 +42,11 @@ const Front = () => {
     </div>
     <div className="w-48 h-10 flex flex-col justify-start items-start gap-2.5">
         <div className="self-stretch flex-1 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-        <Link
-                to='/register'
+        <button onClick={scrollToSection}
                  className="justify-start text-white text-base font-['SF_Pro'] leading-snug"
                  >
                   See how it works
-                </Link>
+                </button>
         </div>
     </div>
 </div>
@@ -92,7 +97,7 @@ const Front = () => {
         </div>
     </div>
   
-    <div className="w-[1200px] h-96 left-[50px] top-[1478px] absolute inline-flex flex-col justify-start items-start gap-12">
+    <div ref={sectionRef} className="w-[1200px] h-96 left-[50px] top-[1478px] absolute inline-flex flex-col justify-start items-start gap-12">
         <div className="self-stretch justify-start text-zinc-800 text-5xl font-bold font-['Inter'] leading-[56px] tracking-wide">How it Works</div>
         <div className="self-stretch h-64 inline-flex justify-start items-start gap-24">
             <div className="w-80 inline-flex flex-col justify-start items-center gap-6">

@@ -4,10 +4,10 @@ import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-do
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ApplicantCard from './pages/admin/ApplicantCrad';
+import ApplicantCard from './pages/admin/ApplicantCard';
 
 
-//import components
+
 import Login from "./pages/login/Login"
 import Register from './pages/registration/Register';
 import Dashboard from './pages/borrower/Dashboard';
@@ -15,7 +15,7 @@ import Front from './components/Front';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterLender from './pages/registration/RegisterLender';
-import thankYou from './pages/thankyou/thankYou';
+import ThankYou from './pages/thankyou/thankYou';
 import RegistrationSection from './pages/RegistrationSection';
 import LenderLogin from './pages/login/LenderLogin'
 import Status from './pages/borrower/Status';
@@ -64,7 +64,7 @@ function App() {
   <Route path="/registration" element={<RegistrationSection />} />
 
   <Route path="/register" element={<Register setAuth={setAuth} />} />
-  <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
+  <Route path="/thankyou" element={<ThankYou  />} />
   <Route path="/register-lender" element={<RegisterLender setAuth={setAuth} />} />
   <Route path="/lender-thankyou" element={<LenderThankYou />} />
 
