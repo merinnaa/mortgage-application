@@ -1,12 +1,38 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import AdminStatus from '../../components/AdminCard';
 
 const AdminDashboard = () => {
-  const applicants = [
-    { name: "Kyle Lebowski" },
-    { name: "Maya Jones" },
-    { name: "John Smith" },
-  ];
+  // const applicants = [
+  //   { name: "Kyle Lebowski" },
+  //   { name: "Maya Jones" },
+  //   { name: "John Smith" },
+  // ];
+  const [applicants, setApplicants] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchApplicants = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/dashboard/lender", {
+          method: "GET",
+          headers: { token: localStorage.token }
+        });
+        
+        const data = await response.json();
+        
+        
+        setApplicants(data.users);
+
+      } catch (error) {
+        console.error('Error fetching applicants:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchApplicants();
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-stone-100 flex justify-center py-16 px-4">
