@@ -67,9 +67,30 @@ const getUserDocumentStatus = async () => {
     console.error(err);
   }
 };
+const getUserDocumentStatusById = async (id) => {
+  try {
+    const data = await db.query(`
+    SELECT 
+    users.id,
+    users.first_name,
+    users.last_name,
+    valid_dr_license,
+    valid_w2,
+    valid_bank_document,
+    document_status.created_at
+    FROM users 
+    INNER JOIN document_status ON document_status.user_id = users.id
+    WHERE id = $1
+    `,[id]);
+    // console.log(data.rows); // rows is the actual result set
+    return data
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 
 
 // getUserById(1);
 
-module.exports = {getUserById, upDateDocumentStatus, getDocumentStatus,getUserDocumentStatus}
+module.exports = {getUserById, upDateDocumentStatus, getDocumentStatus,getUserDocumentStatus,getUserDocumentStatusById}
