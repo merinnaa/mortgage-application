@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import DocumentCard from './DocumentCard';
-
-
+import arrow from '../images/farrow.png'
 const Application = () => {
   const [documents, setDocuments] = useState([]);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const applicantName = searchParams.get('name');
 
   useEffect(() => {
@@ -41,8 +41,19 @@ const Application = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-stone-100 flex justify-center py-16 px-4">
-      <div className="w-full max-w-[600px] flex flex-col gap-8">
+    <div className="w-full min-h-screen bg-stone-100 flex flex-col md:flex-row py-16 px-4 gap-12">
+      <div
+        className="hidden md:flex w-56 h-10 absolute left-[50px] top-[90px] items-center gap-1 cursor-pointer"
+        onClick={() => navigate('/admin-dashboard')}
+      >
+        <div className="w-6 h-6 relative overflow-hidden">
+          <img src={arrow}  />
+          
+        </div>
+        <div className="text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Back</div>
+      </div>
+
+      <div className="w-full max-w-[600px] mx-auto flex flex-col gap-8">
         <h1 className="text-black text-5xl font-bold leading-[56px] tracking-wide">
           Application, {applicantName}
         </h1>
