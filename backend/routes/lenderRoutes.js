@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const validInfo = require("../middleware/validInfo");
 const lenders = require("../controllers/lenderController")
+const status = require("../controllers/documetStatusController")
 const authorization = require("../middleware/authorization");
 const validLender = require("../middleware/validLender");
 const verification = require("../controllers/verificationController");
@@ -21,6 +22,9 @@ router.post("/login-lender",validLender,lenders.login)
 // verify route
 /////////////////////////////////////////////////////////////////////////////////////
 router.get("/is-verify-lender" , authorizeLender,lenders.verify)
+// verify route
+/////////////////////////////////////////////////////////////////////////////////////
+router.get("/status" , authorizeLender,status.status)
 // verify route
 /////////////////////////////////////////////////////////////////////////////////////
 router.post("/document-verify",verification)
