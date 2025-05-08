@@ -1,126 +1,75 @@
-import React,{Fragment} from "react"
-import { useRef } from "react";
+import React, { Fragment, useRef } from "react";
 import { Link } from "react-router-dom";
-import mega from '../images/mega-creator.png'
-import verification from '../images/verification.png'
-import save from '../images/save-ime.png'
-import scale from '../images/scale.png'
+import mega from '../images/mega-creator.png';
+import verification from '../images/verification.png';
+import save from '../images/save-ime.png';
+import scale from '../images/scale.png';
 import '../App.css';
 
 const Front = () => {
-    const sectionRef = useRef(null);
+  const sectionRef = useRef(null);
 
-    const scrollToSection = () => {
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+  const scrollToSection = () => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    < >
-    <section className="w-full flex flex-col-reverse justify-center sm:flex-row h-[2098px] relative bg-stone-100 overflow-hidden gap-[59px]">
-    {/* <article className="w-1/2 sm:w-1/2 max-w-4xl mx-auto left-[50px] top-[282px] absolute inline-flex flex-col justify-start items-start gap-6">
-        <div className="self-stretch flex flex-col justify-start items-start gap-6">
-            <h1 className="self-stretch text-center text-1xl text-zinc-800 text-5xl sm:text-4xl sm:text-left font-bold font-['Inter'] leading-[56px] tracking-wide">Verify Mortgage Loan Documents in Seconds, Not Days</h1>
-            <p className="self-stretch justify-start"><span class="text-zinc-800 text-2xl font-normal font-['Inter'] leading-9 tracking-tight">Automated document analysis that </span><span class="text-teal-500 text-2xl font-semibold font-['Inter'] leading-9 tracking-tight">cuts processing time </span><span class="text-zinc-800 text-2xl font-normal font-['Inter'] leading-9 tracking-tight">and helps close more loans—faster.</span></p>
+    <div className="w-full bg-stone-100 overflow-hidden">
+      <section className="flex flex-col-reverse sm:flex-row justify-center items-center px-6 py-16 gap-12">
+        <div className="flex flex-col justify-start items-start gap-8 max-w-xl text-left">
+          <h1 className="text-zinc-800 text-4xl sm:text-5xl font-bold leading-tight tracking-wide">
+            Verify Mortgage Loan Documents in Seconds, Not Days
+          </h1>
+          <p className="text-zinc-800 text-lg sm:text-2xl">
+            Automated document analysis that <span className="text-teal-500 font-semibold">cuts processing time</span> and helps close more loans—faster.
+          </p>
+          <button
+            onClick={scrollToSection}
+            className="mt-4 px-6 py-2.5 bg-red-400 text-white rounded-full text-base font-semibold hover:bg-red-500 transition"
+          >
+            See how it works
+          </button>
         </div>
-        <div className="w-48 h-10 flex flex-col justify-start items-start gap-2.5">
-            <div className="self-stretch flex-1 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-                <button onClick={scrollToSection}
-                 className="justify-start text-white text-base font-['SF_Pro'] leading-snug"
-                 >
-                  See how it works
-                </button>
-            </div>
-        </div> */}
-
-
-
-
-        <div className="w-1/2 sm:w-1/2 max-w-4xl mx-auto left-[50px] top-[282px] absolute inline-flex flex-col justify-start items-start gap-[59px]">
-    <div className="self-stretch flex flex-col justify-start items-start gap-4">
-        <div className="self-stretch justify-start text-zinc-800 text-5xl font-bold font-['Inter'] leading-[56px] tracking-wide">Verify Mortgage Loan Documents in Seconds, Not Days</div>
-        <div className="self-stretch justify-start"><span class="text-zinc-800 text-2xl font-normal font-['Inter'] leading-9 tracking-tight">Automated document analysis that </span><span class="text-teal-500 text-2xl font-semibold font-['Inter'] leading-9 tracking-tight">cuts processing time </span><span class="text-zinc-800 text-2xl font-normal font-['Inter'] leading-9 tracking-tight">and helps close more loans—faster.</span></div>
-    </div>
-    <div className="w-48 h-10 flex flex-col justify-start items-start gap-2.5">
-        <div className="self-stretch flex-1 p-2.5 bg-red-400 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-        <button onClick={scrollToSection}
-                 className="justify-start text-white text-base font-['SF_Pro'] leading-snug"
-                 >
-                  See how it works
-                </button>
+        <div className="flex justify-center items-center">
+          <img src={mega} alt="Mega Creator" className="w-full max-w-sm sm:max-w-md" />
         </div>
-    </div>
-</div>
+      </section>
 
-    {/* </article> */}
-    <div className="py-20 px-20 gap-[59px]">
-    <img className="w-600 h-350 left-[750px] top-[100px] absolute" src={mega} alt="" />
-    </div>
-</section>
-    <div className="w-full p-2.5 left-0 top-[832px] absolute bg-teal-500 inline-flex flex-col justify-center items-center gap-2.5">
-      
-        <div className="self-stretch p-6 bg-teal-500 inline-flex justify-between items-start">
-            <div className="w-96 h-[478px] p-6 bg-neutral-100 rounded-2xl flex justify-start items-center gap-2.5">
-                <div className="flex-1 h-96 flex justify-start items-start gap-6">
-                    <div className="w-80 inline-flex flex-col justify-start items-start gap-7">
-                        <img className="self-stretch h-56" src={verification} alt=""/>
-                        <div className="self-stretch flex flex-col justify-start items-center gap-4">
-                            <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Instant Accuracy, Zero Guesswork</div>
-                            <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Let Fundify handle the heavy lifting. Detect mismatches, and compliance issues in real-time.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="h-[478px] p-6 bg-neutral-100 rounded-2xl flex justify-start items-center gap-2.5">
-                <div className="w-80 h-96 inline-flex flex-col justify-start items-start gap-6">
-                    <div className="self-stretch flex flex-col justify-start items-start gap-8">
-                        <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                            <div className="self-stretch flex flex-col justify-center items-center gap-2.5">
-                                <img className="w-64 h-56" src={save} alt=""/>
-                            </div>
-                        </div>
-                        <div className="self-stretch flex flex-col justify-start items-center gap-4">
-                            <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Cut Processing Time </div>
-                            <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Our automation slashes verification time, helping you move faster than your competition.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="h-[478px] p-6 bg-neutral-100 rounded-2xl flex justify-start items-center gap-2.5">
-                <div className="w-80 h-96 inline-flex flex-col justify-start items-start">
-                    <img className="w-80 h-72" src={scale} alt=""/>
-                    <div className="self-stretch flex flex-col justify-start items-center gap-4">
-                        <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Scale Smarter, Not Harder</div>
-                        <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Grow your loan volume without growing your ops team. Fundify handles more volume, so your staff doesn’t have to.</div>
-                    </div>
-                </div>
-            </div>
+      <section className="bg-teal-500 py-12 px-6 flex flex-col lg:flex-row justify-center items-center gap-8">
+        <div className="bg-neutral-100 rounded-2xl p-6 max-w-xs flex flex-col gap-4 items-center">
+          <img src={verification} alt="Verification" className="h-56 object-contain" />
+          <h2 className="text-zinc-800 text-xl font-bold">Instant Accuracy, Zero Guesswork</h2>
+          <p className="text-zinc-800 text-base">Let Fundify handle the heavy lifting. Detect mismatches, and compliance issues in real-time.</p>
         </div>
-    </div>
-  
-    <div ref={sectionRef} className="w-[1200px] h-96 left-[50px] top-[1478px] absolute inline-flex flex-col justify-start items-start gap-12">
-        <div className="self-stretch justify-start text-zinc-800 text-5xl font-bold font-['Inter'] leading-[56px] tracking-wide">How it Works</div>
-        <div className="self-stretch h-64 inline-flex justify-start items-start gap-24">
-            <div className="w-80 inline-flex flex-col justify-start items-center gap-6">
-                <div className="self-stretch h-10 justify-start text-teal-500 text-6xl font-bold font-['Inter'] leading-normal">01.</div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                    <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Upload the docs — we handle the rest.</div>
-                    <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">As soon as documents (like paystubs, bank statements, or IDs) are uploaded, they're automatically routed for verification.</div>
-                </div>
-            </div>
-            <div className="w-80 inline-flex flex-col justify-start items-center gap-6">
-                <div className="self-stretch h-10 justify-start text-teal-500 text-6xl font-bold font-['Inter'] leading-normal">02.</div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                    <div className="self-stretch justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Verifies in Real-Time</div>
-                    <div className="self-stretch justify-start text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Fundify checks for document completeness, validates income and identity, and flags any anomalies.</div>
-                </div>
-            </div>
+        <div className="bg-neutral-100 rounded-2xl p-6 max-w-xs flex flex-col gap-4 items-center">
+          <img src={save} alt="Save Time" className="h-56 object-contain" />
+          <h2 className="text-zinc-800 text-xl font-bold">Cut Processing Time</h2>
+          <p className="text-zinc-800 text-base">Our automation slashes verification time, helping you move faster than your competition.</p>
         </div>
-    </div>
-    
-  
-   
-    </>
-  )
+        <div className="bg-neutral-100 rounded-2xl p-6 max-w-xs flex flex-col gap-4 items-center">
+          <img src={scale} alt="Scale" className="h-56 object-contain" />
+          <h2 className="text-zinc-800 text-xl font-bold">Scale Smarter, Not Harder</h2>
+          <p className="text-zinc-800 text-base">Grow your loan volume without growing your ops team. Fundify handles more volume, so your staff doesn’t have to.</p>
+        </div>
+      </section>
 
+      <section ref={sectionRef} className="px-6 py-12 flex flex-col gap-8 max-w-5xl mx-auto">
+        <h2 className="text-zinc-800 text-4xl font-bold tracking-wide">How it Works</h2>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex-1 flex flex-col gap-4">
+            <h3 className="text-teal-500 text-3xl font-bold">01.</h3>
+            <h4 className="text-zinc-800 text-xl font-bold">Upload the docs — we handle the rest.</h4>
+            <p className="text-zinc-800 text-base">As soon as documents (like paystubs, bank statements, or IDs) are uploaded, they're automatically routed for verification.</p>
+          </div>
+          <div className="flex-1 flex flex-col gap-4">
+            <h3 className="text-teal-500 text-3xl font-bold">02.</h3>
+            <h4 className="text-zinc-800 text-xl font-bold">Verifies in Real-Time</h4>
+            <p className="text-zinc-800 text-base">Fundify checks for document completeness, validates income and identity, and flags any anomalies.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
+
 export default Front;
