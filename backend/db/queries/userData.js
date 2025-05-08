@@ -37,8 +37,39 @@ const upDateDocumentStatus = (user_id,valid_dr_license,valid_w2, valid_bank_docu
             
 }
 
+const getDocumentStatus = async (user_id ) => {
+  try {
+   const data = await db.query(`SELECT * FROM document_status WHERE user_id = $1`,[user_id])
+   return data.rows
+    
+  } catch (err) {
+    console.error(err);
+}
+};
+
+const getUserDocumentStatus = async () => {
+  try {
+    const data = await db.query(`
+    SELECT 
+    users.id,
+    users.first_name,
+    users.last_name,
+    valid_dr_license,
+    valid_w2,
+    valid_bank_document,
+    document_status.created_at
+    FROM users 
+    INNER JOIN document_status ON document_status.user_id = users.id
+    `);
+    // console.log(data.rows); // rows is the actual result set
+    return data
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 
 // getUserById(1);
 
-module.exports = {getUserById, upDateDocumentStatus}
+module.exports = {getUserById, upDateDocumentStatus, getDocumentStatus,getUserDocumentStatus}
