@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        const response = await fetch("http://localhost:5000/dashboard/lender", {
+        const response = await fetch("https://mortgage-application-server.vercel.app/dashboard/lender", {
           method: "GET",
           headers: { token: localStorage.token }
         });
