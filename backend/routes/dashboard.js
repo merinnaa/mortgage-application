@@ -16,6 +16,24 @@ router.get("/", authorization, async (req, res) => {
     res.status(500).json("Server Error");
   }
 });
+
+//////////////////////
+router.get("/status", authorization, async (req, res) => {
+  try {
+     const userStatus = await documentStatus.getUserDocumentStatusById(req.id);
+      console.log(userStatus.rows)
+      return res.json(userStatus.rows)
+     
+    
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json("Server Error");
+  }
+});
+
+
+
+////////////////////
 router.get("/lender", authorizeLender, async(req,res) => {
 
   try {
