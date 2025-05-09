@@ -45,18 +45,7 @@ const navigate = useNavigate();
         >
           Log In
         </Link>
-        {/* <Link
-          to="/login"
-          className="text-teal-500 text-base leading-snug font-sans hover:underline"
-        >
-          Log in as borrower
-        </Link>
-        <Link
-          to="/login-lender"
-          className="text-teal-500 text-base leading-snug font-sans hover:underline"
-        >
-          Log in as lender
-        </Link> */}
+        
       
       </>
         ) : (
