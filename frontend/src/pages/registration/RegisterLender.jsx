@@ -99,7 +99,7 @@ const RegisterLender = ({ setAuth }) => {
             <h2 className="text-zinc-800 text-2xl font-bold">Sign up</h2>
             <p className="text-center text-zinc-800 text-base">
               Already have an account?{' '}
-              <Link to="/login" className="text-teal-500 font-bold">
+              <Link to="/sign-in" className="text-teal-500 font-bold">
                 Log in
               </Link>
             </p>
