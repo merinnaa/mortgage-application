@@ -67,6 +67,13 @@ const navigate = useNavigate();
 
   return (
     <div className="w-full min-h-screen bg-stone-100 flex flex-col items-center justify-start pt-20 mt-200">
+        <div
+        className="hidden md:flex w-56 h-10 absolute left-[80px] top-[100px] items-center gap-1 cursor-pointer"
+        onClick={() => navigate('/status')}
+      >
+        
+        <div className="text-zinc-800 text-base font-normal font-['Inter'] leading-normal  h-10 p-2.5 rounded-[48px] bg-red-400 text-white">Check Status</div>
+      </div>
       <h1 className="text-5xl font-bold mb-10">Welcome, {name}</h1>
 
       <form onSubmit={onSubmit} className="bg-white p-12 rounded-lg flex flex-col gap-[59px] items-center w-full max-w-2xl mb-10">
