@@ -1,248 +1,196 @@
-import React, {Fragment, useState} from "react";
+import React, { Fragment, useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
- const RegisterLender = ({setAuth})=> {
+import { Link, useNavigate } from "react-router-dom";
 
-   const [inputs, setInputs] = useState({
-     email:"",
-     password:"",
-    first_name:"",
-    last_name:"",
-    institution:"",
+const RegisterLender = ({ setAuth }) => {
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    institution: "",
     confirmPassword: "",
     employee_id: "",
-    role:""
-   })
+    role: ""
+  });
 
-   const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const {
+    email,
+    password,
+    first_name,
+    last_name,
+    institution,
+    confirmPassword,
+    employee_id,
+    role
+  } = inputs;
 
-const navigate = useNavigate();
-   const {email, password, first_name, last_name,institution, confirmPassword,employee_id, role } = inputs;
-
-   const onChange = (e) => {
-     setInputs({ ...inputs, [e.target.name]: e.target.value});
-   }
-
-
+  const onChange = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    console.log(inputs)
+    console.log(inputs);
 
-const newErrors = ({});
-if(!first_name) newErrors.first_name = "First name is required";
-if(!last_name) newErrors.last_name = "Last Name is required";
-if(!email) newErrors.email = "Email is is required";
-if(!password) newErrors.password ="Password is required";
-if(!institution) newErrors.institution ="Institution is required";
+    const newErrors = {};
+    if (!first_name) newErrors.first_name = "First name is required";
+    if (!last_name) newErrors.last_name = "Last Name is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
+    if (!institution) newErrors.institution = "Institution is required";
+    if (!employee_id) newErrors.employee_id = "Employee ID is required";
+    if (!role) newErrors.role = "Select a role";
+    if (!confirmPassword || confirmPassword !== password) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
 
-if (!confirmPassword || confirmPassword !== password) {
-  newErrors.confirmPassword = "Passwords do not match";
-}
-if(!employee_id) newErrors.employee_id ="Employee Id is required";
-if(!role) newErrors.role ="Select a role ";
-if (Object.keys(newErrors).length > 0) {
-  setErrors(newErrors);
-  return; 
-}
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
-setErrors({})
+    setErrors({});
 
     try {
-     const body = {email, password, first_name, last_name,institution, employee_id,role};
+      const body = {
+        email,
+        password,
+        first_name,
+        last_name,
+        institution,
+        employee_id,
+        role
+      };
 
-      const response = await fetch("https://mortgage-application-server.vercel.app/auth/register-lender", {
-        method: "POST",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(body)
-        
-    });
+      const response = await fetch(
+        "https://mortgage-application-server.vercel.app/auth/register-lender",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        }
+      );
 
       const parseRes = await response.json();
 
-     if(parseRes.token) {
-      // localStorage.setItem("token", parseRes.token);
-      // setAuth(true);
-     toast.success("Registered Successfully")
-     navigate("/lender-thankyou")  
-    }else {
-      setAuth(false)
-     toast.error(parseRes)
-        
-     }
-      
-  } catch (error) {
-   console.error(error.message)
-      
-  }
-  
-  }
-
-
-
-
+      if (parseRes.token) {
+        toast.success("Registered Successfully");
+        navigate("/lender-thankyou");
+      } else {
+        setAuth(false);
+        toast.error(parseRes);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
-    <>
-      <div className="w-full h-[982px] relative bg-stone-100 overflow-hidden">
-   
-    <form 
-    onSubmit={onSubmitForm}
-    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[541px] p-12 bg-white rounded-lg inline-flex flex-col justify-start items-center gap-11">
-        <div className="self-stretch flex flex-col justify-start items-start gap-12">
-            <div className="self-stretch flex flex-col justify-start items-center gap-4">
-                <div className="self-stretch text-center justify-start text-zinc-800 text-2xl font-bold font-['Inter'] leading-9 tracking-tight">Sign up</div>
-                <div className="self-stretch text-center justify-start"><span class="text-zinc-800 text-base font-normal font-['Inter'] leading-normal">Already have an account? </span><Link to={'/login'} class="text-teal-500 text-base font-bold font-['Inter'] leading-normal">Log in</Link></div>
+    <div className="min-h-screen w-full bg-stone-100 flex items-center justify-center px-4">
+      <form
+        onSubmit={onSubmitForm}
+        className="w-full max-w-md p-8 bg-white rounded-lg flex flex-col justify-start items-center gap-10"
+      >
+        <div className="w-full flex flex-col gap-10">
+          <div className="w-full flex flex-col items-center gap-4">
+            <h2 className="text-zinc-800 text-2xl font-bold">Sign up</h2>
+            <p className="text-center text-zinc-800 text-base">
+              Already have an account?{' '}
+              <Link to="/sign-in" className="text-teal-500 font-bold">
+                Log in
+              </Link>
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {[
+              { name: "first_name", type: "text", placeholder: "First Name" },
+              { name: "last_name", type: "text", placeholder: "Last Name" },
+              { name: "email", type: "email", placeholder: "Email Address" },
+              { name: "password", type: "password", placeholder: "Password" },
+              { name: "confirmPassword", type: "password", placeholder: "Confirm Password" },
+              { name: "institution", type: "text", placeholder: "Institution" },
+              { name: "employee_id", type: "text", placeholder: "Employee ID" }
+            ].map((field) => (
+              <div key={field.name} className="flex flex-col gap-2.5">
+                <div
+                  className={`w-full h-10 rounded-lg outline outline-1 inline-flex justify-center items-center px-4 gap-2.5 ${
+                    errors[field.name] ? "outline-orange-600" : "outline-black"
+                  }`}
+                >
+                  <input
+                    name={field.name}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={inputs[field.name]}
+                    onChange={onChange}
+                    className="w-full h-full bg-transparent outline-none placeholder:text-zinc-800 text-base"
+                  />
+                </div>
+                {errors[field.name] && (
+                  <div className="text-orange-600 text-base">{errors[field.name]}</div>
+                )}
+              </div>
+            ))}
+
+            <div className="flex flex-col gap-2.5">
+              <div
+                className={`w-full h-10 rounded-lg outline outline-1 inline-flex justify-center items-center px-4 gap-2.5 ${
+                  errors.role ? "outline-orange-600" : "outline-black"
+                }`}
+              >
+                <select
+                  name="role"
+                  value={role}
+                  onChange={onChange}
+                  className="w-full h-full bg-transparent outline-none text-base text-zinc-800"
+                >
+                  <option value="">Select user type</option>
+                  <option value="admin">Admin</option>
+                  <option value="supervisor">Reviewer</option>
+                </select>
+              </div>
+              {errors.role && (
+                <div className="text-orange-600 text-base">{errors.role}</div>
+              )}
             </div>
-            <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div 
-                    className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.first_name ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input
-                        
-                        name="first_name"
-                        placeholder="First Name"
-                        type="text"
-                        value={first_name}
-           onChange={(e) => onChange(e)}
-                         className="w-full h-full px-4  placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"/>
-                         
-                    </div>
-                    {errors.first_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.first_name}</div>}
-                </div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.last_name? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input 
-                        name="last_name"
-                        placeholder="Last Name"
-                        type="text"
-                        
-                        value={last_name}
-           onChange={(e) => onChange(e)}
-                        
-                        className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
-                    </div>
-                    {errors.last_name && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.last_name}</div>}
-                </div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.email ? ' outline-orange-600':' outline-black' }
-  `}>
-                        < input
-                        type="email"
-                        placeholder="Email Address"
-                        name="email"
-                        value={email}
-          onChange={(e) => onChange(e)}
-                        className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
-                    </div>
-                    {errors.email && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.email}</div>}
-                </div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.password ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={password}
-                                 onChange={(e) => onChange(e)}
+          </div>
 
-                         className="flex-1 h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" />
-                    </div>
-                    {errors.password && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.password}</div>}
-                </div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.confirmPassword ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input
-                        
-                        type="password" 
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={confirmPassword}
-                        onChange={(e) => onChange(e)}
-                        className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
-                    </div>
-                    {errors.confirmPassword && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.confirmPassword}</div>}
-                </div>
-
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.institution ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input
-                        
-                        type="text" 
-                        name="institution"
-                        placeholder="Institution"
-                        value={institution}
-                        onChange={(e) => onChange(e)}
-                        className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
-                    </div>
-                    {errors.institution && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.institution}</div>}
-                </div>
-
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.employeeId ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <input
-                        
-                        type="text" 
-                        name="employee_id"
-                        placeholder="Employee ID"
-                        value={employee_id}
-                        onChange={(e) => onChange(e)}
-                        className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal"  />
-                    </div>
-                    {errors.employee_id && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.employee_id}</div>}
-                </div>
-                
-                <div className="self-stretch flex flex-col justify-start items-start gap-2.5">
-                    <div className={`w-full h-10  rounded-lg  outline outline-1 outline-offset-[-1px] inline-flex justify-center items-center gap-2.5
-                    ${ errors.role ? ' outline-orange-600':' outline-black' }
-  `}>
-                        <select
-                        
-                         
-                        name="role"
-                        // placeholder="Select user type"
-                        value={role}
-                        onChange={(e) => onChange(e)}
-                        className="w-full h-full px-4 justify-start placeholder:text-zinc-800 text-base font-normal font-['Inter'] leading-normal" 
-                         >
-                        <option value="">Select user type</option>
-                        <option value="admin">Admin</option>
-                        <option value="supervisor">Reviewer</option>
-                       
-                        </select>
-
-                    </div>
-                    {errors.role && <div className="self-stretch h-6 justify-start text-orange-600 text-base font-normal font-['Inter'] leading-normal">{errors.role}</div>}
-                </div>
-
-            </div>
+          <button
+            type="submit"
+            disabled={
+              !first_name ||
+              !last_name ||
+              !email ||
+              !password ||
+              !confirmPassword ||
+              !institution ||
+              !employee_id ||
+              !role
+            }
+            className={`w-full h-10 rounded-[48px] p-2.5 text-base font-semibold transition text-center
+              ${
+                first_name &&
+                last_name &&
+                email &&
+                password &&
+                confirmPassword &&
+                institution &&
+                employee_id &&
+                role
+                  ? "bg-red-400 text-white"
+                  : "bg-neutral-100 text-stone-500 cursor-not-allowed"
+              }`}
+          >
+            Sign up
+          </button>
         </div>
-        <div className="self-stretch h-10  bg-Button-Inactive/20 rounded-[48px] inline-flex justify-center items-center gap-2.5">
-<button 
+      </form>
+    </div>
+  );
+};
 
-className={`w-full h-full  p-2.5 rounded-[48px] text-Button-Text-Inactive/20 text-base font-['SF_Pro'] leading-snug
-${  inputs.first_name && inputs.last_name &&  inputs.email &&  inputs.password &&  inputs.confirmPassword && inputs.employee_id && inputs.role ? "bg-red-400 text-white" : "bg-neutral-100 text-stone-500"}
-`}>Sign up</button>
-</div>
-    </form>
-   
-</div>
-    </>
-  )
-}
-
-export default RegisterLender
+export default RegisterLender;
