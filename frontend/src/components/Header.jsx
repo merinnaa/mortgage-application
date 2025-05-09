@@ -72,26 +72,20 @@ const navigate = useNavigate();
           {!isAuthenticated ? (
             <>
              <Link
-             to="/register"
+             to="/registration"
              className="block w-full py-2 bg-red-400 text-white rounded-full  text-center hover:bg-red-500 transition"
              onClick={() => setIsOpen(false)}
            >
              Create account
            </Link>
            <Link
-             to="/login"
+             to="/sign-in"
              className="block w-full text-teal-500 text-center"
              onClick={() => setIsOpen(false)}
            >
-             Log in as borrower
+             Log in 
            </Link>
-           <Link
-             to="/loginlender"
-             className="block w-full text-teal-500 text-center"
-             onClick={() => setIsOpen(false)}
-           >
-             Log in as lender
-           </Link>
+          
            </>
           ) : (
           <button
