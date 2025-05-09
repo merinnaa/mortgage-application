@@ -127,8 +127,13 @@ const Status = () => {
 
   useEffect(() => {
     const fetchDocuments = async () => {
+      //https://mortgage-application-server.vercel.app
       try {
-        const response = await fetch("https://mortgage-application-server.vercel.app/dashboard/status"); // replace with your actual endpoint
+        const response = await fetch("https://mortgage-application-server.vercel.app/dashboard/status",{
+          method: "GET",
+          headers: { token: localStorage.token }
+        });
+      // replace with your actual endpoint
         const data = await response.json();
 
         if (!data || data.length === 0) {
