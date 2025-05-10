@@ -38,9 +38,9 @@ const CombinedLogin = ({ setAuth }) => {
             <div className="text-center">
               <span className="text-zinc-800 text-base font-normal font-['Inter'] leading-normal">
                 New to Fundify? </span>
-              <span className="text-teal-500 text-base font-bold font-['Inter'] leading-normal">
+              <Link to='/registration'className="text-teal-500 text-base font-bold font-['Inter'] leading-normal">
                 Sign up for free
-              </span>
+              </Link>
             </div>
           </div>
           <div className="max-h-[500px] overflow-y-auto w-full">
